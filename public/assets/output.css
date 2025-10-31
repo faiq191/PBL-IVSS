@@ -550,6 +550,12 @@ video {
 
 /* Make elements with the HTML hidden attribute stay hidden by default */
 
+
+/* Ini buat hover group*/
+.group:hover .group-hover\:block {
+  display: block;
+}
+
 [hidden]:where(:not([hidden="until-found"])) {
   display: none;
 }
