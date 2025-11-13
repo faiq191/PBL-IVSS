@@ -94,62 +94,14 @@
     <div class="h-16"></div>
 
 
-    <!-- LAB PROFILE SECTION -->
-
-    <section class="container mx-auto px-4 lg:px-14 mt-20 mb-10">
-      <div class="max-w-3xl mx-auto bg-slate-50 border border-slate-200 rounded-xl p-8 shadow-md">
-        <h2 class="font-bold text-2xl text-center mb-4">Profil Laboratorium</h2>
-        <p class="text-slate-600 leading-relaxed text-center space-y-4">
-          <span>Laboratorium Visi Cerdas dan Sistem Cerdas merupakan pusat riset dan pengembangan di bawah Jurusan Teknologi Informasi Politeknik Negeri Malang yang berfokus pada bidang intelligent vision, dan smart system.</span>
-          <span>Laboratorium ini menjadi wadah bagi dosen dan mahasiswa untuk melakukan penelitian, pembelajaran, serta pelatihan dalam pengembangan sistem cerdas berbasis pengolahan citra dan kecerdasan buatan.</span>
-          <span>Penelitian di laboratorium ini mengintegrasikan computer vision, AI, dan IoT untuk menciptakan solusi inovatif yang mampu mengenali, menganalisis, serta merespon lingkungan secara mandiri.</span>
-        </p>
-      </div>
-    </section>
-
-
-
-    <!-- BERITA UNGGULAN -->
+ <!-- RESEARCH UNGGULAN -->
     <section class="container mx-auto px-4 lg:px-14 mt-10">
-
-      <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
-        <div class="font-bold text-2xl text-center md:text-left">
-          <p>Labs News</p>
-        </div>
-        <a href="{{  route('halaman.news') }}" class="bg-primary px-5 py-2 rounded-full text-white font-semibold mt-4 md:mt-0">
-          Lihat Semua
-        </a>
-      </div>
-
-      <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
-
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Pemanfaatan Wireshark untuk Sniffing Komunikasi Data Berprotokol HTTP pada Jaringan Internet</p>
-          <p class="text-slate-400 text-sm">2021</p>
-        </div>
-
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Segmentasi berbasis k-means pada deteksi citra penyakit daun tanaman jagung</p>
-          <p class="text-slate-400 text-sm">2020</p>
-        </div>
-
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Klasifikasi Jenis Kelamin Pada Citra Wajah Menggunakan Metode Naive Bayes</p>
-          <p class="text-slate-400 text-sm">2018</p>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- RESEARCH UNGGULAN -->
-    <section class="container mx-auto px-4 lg:px-14 mt-10 mb-10">
 
       <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
         <div class="font-bold text-2xl text-center md:text-left">
           <p>Labs Research</p>
         </div>
-        <a href="{{route('halaman.research') }}" class="bg-primary px-5 py-2 rounded-full text-white font-semibold mt-4 md:mt-0">
+        <a href="#" class="bg-primary px-5 py-2 rounded-full text-white font-semibold mt-4 md:mt-0">
           Lihat Semua
         </a>
       </div>

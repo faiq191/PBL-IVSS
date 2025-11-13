@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Lecturers</title>
   <link href="{{ secure_asset('assets/output.css') }}" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -93,87 +93,91 @@
 
     <div class="h-16"></div>
 
+    <!-- CONTENT -->
+    <div class="container mx-auto px-4 lg:px-14 py-12">
+      <!-- Judul utama -->
+      <h1 class="text-3xl font-bold text-center mb-10">
+        Lab Members <span class="text-gray-500 text-lg"></span>
+      </h1>
 
-    <!-- LAB PROFILE SECTION -->
-
-    <section class="container mx-auto px-4 lg:px-14 mt-20 mb-10">
-      <div class="max-w-3xl mx-auto bg-slate-50 border border-slate-200 rounded-xl p-8 shadow-md">
-        <h2 class="font-bold text-2xl text-center mb-4">Profil Laboratorium</h2>
-        <p class="text-slate-600 leading-relaxed text-center space-y-4">
-          <span>Laboratorium Visi Cerdas dan Sistem Cerdas merupakan pusat riset dan pengembangan di bawah Jurusan Teknologi Informasi Politeknik Negeri Malang yang berfokus pada bidang intelligent vision, dan smart system.</span>
-          <span>Laboratorium ini menjadi wadah bagi dosen dan mahasiswa untuk melakukan penelitian, pembelajaran, serta pelatihan dalam pengembangan sistem cerdas berbasis pengolahan citra dan kecerdasan buatan.</span>
-          <span>Penelitian di laboratorium ini mengintegrasikan computer vision, AI, dan IoT untuk menciptakan solusi inovatif yang mampu mengenali, menganalisis, serta merespon lingkungan secara mandiri.</span>
-        </p>
-      </div>
-    </section>
-
-
-
-    <!-- BERITA UNGGULAN -->
-    <section class="container mx-auto px-4 lg:px-14 mt-10">
-
-      <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
-        <div class="font-bold text-2xl text-center md:text-left">
-          <p>Labs News</p>
-        </div>
-        <a href="{{  route('halaman.news') }}" class="bg-primary px-5 py-2 rounded-full text-white font-semibold mt-4 md:mt-0">
-          Lihat Semua
+      <!-- Kepala Lab -->
+      <h2 class="text-2xl font-bold text-center mb-6">Kepala Lab</h2>
+      <div class="flex justify-center mb-12">
+        <a href="https://scholar.google.com/citations?hl=en&user=Ysdl_MIAAAAJ" target="_blank"
+          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200 mx-4">
+          <img src="{{ asset('assets/img/Ulla-Delfana-Rosiani_197803272003122002.jpg') }}"
+            alt="Dr. Ulla Delfana Rosiani"
+            class="w-36 h-36 rounded-full object-cover object-center mb-4">
+          <h2 class="font-semibold text-base text-gray-800">Dr. Ulla Delfana Rosiani, ST., MT.</h2>
+          <p class="text-sm text-gray-500 mt-1">Kepala Lab</p>
         </a>
       </div>
+      <!-- Peneliti -->
+      <h2 class="text-2xl font-bold text-center mb-6">Peneliti</h2>
+      <div class="grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
-      <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
-
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Pemanfaatan Wireshark untuk Sniffing Komunikasi Data Berprotokol HTTP pada Jaringan Internet</p>
-          <p class="text-slate-400 text-sm">2021</p>
-        </div>
-
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Segmentasi berbasis k-means pada deteksi citra penyakit daun tanaman jagung</p>
-          <p class="text-slate-400 text-sm">2020</p>
-        </div>
-
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Klasifikasi Jenis Kelamin Pada Citra Wajah Menggunakan Metode Naive Bayes</p>
-          <p class="text-slate-400 text-sm">2018</p>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- RESEARCH UNGGULAN -->
-    <section class="container mx-auto px-4 lg:px-14 mt-10 mb-10">
-
-      <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
-        <div class="font-bold text-2xl text-center md:text-left">
-          <p>Labs Research</p>
-        </div>
-        <a href="{{route('halaman.research') }}" class="bg-primary px-5 py-2 rounded-full text-white font-semibold mt-4 md:mt-0">
-          Lihat Semua
+        <!-- Lecturer 2 -->
+        <a href="https://scholar.google.com/citations?hl=en&user=z3yHGr0AAAAJ" target="_blank"
+          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200">
+          <img src="{{ asset('assets/img/Mamluatul-Hani_ah_199002062019032013-scaled.jpg') }}"
+            alt="Mamluatul Hani’ah"
+            class="w-36 h-36 rounded-full object-cover object-center mb-4">
+          <h2 class="font-semibold text-base text-gray-800">Mamluatul Hani’ah, S.Kom., M.Kom.</h2>
+          <p class="text-sm text-gray-500 mt-1">Peneliti</p>
         </a>
+
+        <!-- Lecturer 3 -->
+        <a href="https://scholar.google.com/citations?hl=en&user=z4yOSgUAAAAJ" target="_blank"
+          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200">
+          <img src="{{ asset('assets/img/Mungki-Astiningrum.jpg') }}"
+            alt="Mungki Astiningrum"
+            class="w-36 h-36 rounded-full object-cover object-center mb-4">
+          <h2 class="font-semibold text-base text-gray-800">Mungki Astiningrum, ST., M.Kom.</h2>
+          <p class="text-sm text-gray-500 mt-1">Peneliti</p>
+        </a>
+
+        <!-- Lecturer 4 -->
+        <a href="https://scholar.google.com/citations?hl=en&user=A1592kEAAAAJ" target="_blank"
+          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200">
+          <img src="{{ asset('assets/img/Rosa-Andrie-Asmara_2.jpg') }}"
+            alt="Prof. Dr. Eng. Rosa Andrie Asmara"
+            class="w-36 h-36 rounded-full object-cover object-center mb-4">
+          <h2 class="font-semibold text-base text-gray-800">Prof. Dr. Eng. Rosa Andrie Asmara, ST., MT.</h2>
+          <p class="text-sm text-gray-500 mt-1">Peneliti</p>
+        </a>
+
+        <!-- Lecturer 5 -->
+        <a href="https://scholar.google.com/citations?hl=en&user=g-DSiNsAAAAJ" target="_blank"
+          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200">
+          <img src="{{ asset('assets/img/Vivi-Nur-Wijayaningrum_199308112019032025-scaled.jpg') }}"
+            alt="Vivi Nur Wijayaningrum"
+            class="w-36 h-36 rounded-full object-cover object-center mb-4">
+          <h2 class="font-semibold text-base text-gray-800">Vivi Nur Wijayaningrum, S.Kom., M.Kom.</h2>
+          <p class="text-sm text-gray-500 mt-1">Peneliti</p>
+        </a>
+
+        <!-- Lecturer 6 -->
+        <a href="https://scholar.google.com/citations?user=W4xRFkQAAAAJ&hl=en" target="_blank"
+          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200">
+          <img src="{{ asset('assets/img/Wilda-Imama-Sabilla.jpg') }}"
+            alt="Wilda Imama Sabilla"
+            class="w-36 h-36 rounded-full object-cover object-center mb-4">
+          <h2 class="font-semibold text-base text-gray-800">Wilda Imama Sabilla, S.Kom., M.Kom.</h2>
+          <p class="text-sm text-gray-500 mt-1">Peneliti</p>
+        </a>
+
+        <!-- Lecturer 7 -->
+        <a href="https://scholar.google.com/citations?user=Hs9bkN0AAAAJ&hl=en" target="_blank"
+          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200">
+          <img src="{{ asset('assets/img/Ely-Setyo-Astuti.jpg') }}"
+            alt="Dr. Ely Setyo Astuti"
+            class="w-36 h-36 rounded-full object-cover object-center mb-4">
+          <h2 class="font-semibold text-base text-gray-800">Dr. Ely Setyo Astuti, ST., MT.</h2>
+          <p class="text-sm text-gray-500 mt-1">Peneliti</p>
+        </a>
+
       </div>
-
-      <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
-
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Pemanfaatan Wireshark untuk Sniffing Komunikasi Data Berprotokol HTTP pada Jaringan Internet</p>
-          <p class="text-slate-400 text-sm">2021</p>
-        </div>
-
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Segmentasi berbasis k-means pada deteksi citra penyakit daun tanaman jagung</p>
-          <p class="text-slate-400 text-sm">2020</p>
-        </div>
-
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Klasifikasi Jenis Kelamin Pada Citra Wajah Menggunakan Metode Naive Bayes</p>
-          <p class="text-slate-400 text-sm">2018</p>
-        </div>
-
-      </div>
-
-    </section>
+    </div>
 
     <!-- SCRIPT -->
     <script>
