@@ -10,12 +10,27 @@ use Illuminate\Http\RedirectResponse;
 
 class newsController extends Controller
 {
+
+public function news()
+{
+    $news = News::orderBy('date','desc')->get();
+    dd($news);
+    return view('halaman.news', compact('news'));
+}
+
+public function admin()
+{
+    $news = News::latest()->get();
+    return view('admin', compact('news'));
+}
     public function store(Request $request): RedirectResponse
     {
+
+
         //validate form
         $request->validate([
             'image'           => 'required',
-            'tittle'          => 'required',
+            'title'          => 'required',
             'description'     => 'required',
             'date'            => 'required',
             'type'            => 'required',
@@ -27,11 +42,13 @@ class newsController extends Controller
         //create post
         News::create([
             'image'           => $imagePath,
-            'tittle'          => $request->tittle,
+            'title'          => $request->title,
             'description'     => $request->description,
             'date'            => $request->date,
             'type'            => $request->type
         ]);
+
+
 
         //redirect to index
         return redirect()->route('halaman.admin')->with(['success' => 'Data Berhasil Disimpan!']);

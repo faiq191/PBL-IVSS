@@ -28,15 +28,21 @@ class halamanController extends Controller
 
     /*** Menampilkan halaman research ***/
 
-    public function research()
-    {
-        return view('research');
-    }
+public function research()
+{
+    $research = \App\Models\Research::orderBy('date', 'desc')->get();
+
+    return view('research', compact('research'));
+}
+
 
     public function documents()
     {
-        return view('documents');
+        $documents = \App\Models\Documents::orderBy('date', 'desc')->get();
+
+        return view('documents', compact('documents'));
     }
+
 
 
     /*** Menampilkan halaman member ***/
@@ -54,8 +60,14 @@ class halamanController extends Controller
     /*** Menampilkan halaman news & contact ***/
     public function news()
     {
-        return view('news');
+        $news = \App\Models\News::latest()->get();
+
+    return view('news', compact('news'));
+
+
     }
+
+
 
     public function contacts()
     {
@@ -64,20 +76,38 @@ class halamanController extends Controller
 
 
     /*** Menampilkan halaman admin ***/
-    public function admin()
-    {
-        return view('admin');
-    }
+public function admin()
+{
+    $news = \App\Models\News::latest()->get();
+    $research = \App\Models\Research::orderBy('date', 'desc')->get();
+    $documents = \App\Models\Documents::orderBy('date', 'desc')->get();
+
+    return view('admin', compact('news', 'research', 'documents'));
+}
 
     public function create()
     {
         return view('create');
     }
 
-    public function edit()
+    public function edit(Request $request, $id)
     {
-        return view('edit');
+        $type = $request->type;
+
+        if ($type === 'news') {
+            $data = \App\Models\News::findOrFail($id);
+        } elseif ($type === 'research') {
+            $data = \App\Models\Research::findOrFail($id);
+        } else {
+            $data = \App\Models\Documents::findOrFail($id);
+        }
+
+        return view('edit', [
+            'data' => $data,
+            'type' => $type
+        ]);
     }
+
 
     public function delete()
     {

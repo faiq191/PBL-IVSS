@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecturers</title>
-    <link href="{{ secure_asset('assets/output.css') }}" rel="stylesheet">
+    <link href="{{ ('assets/output.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -79,88 +79,124 @@
         <div class="h-16"></div>
 
         <!-- CONTENT -->
-        <div class="container mx-auto px-4 lg:px-14 py-12 space-y-16">
-            <!-- LIST BERITA -->
-            <section id="list-berita">
-                <h1 class="text-3xl font-bold text-center mb-10">
-                    List Berita
-                </h1>
+<div class="max-w-6xl mx-auto px-4 py-12 space-y-20">
+<!-- FILTER BAR -->
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
 
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10 justify-items-center">
-                    <!-- Berita 1 -->
-                    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition duration-200 w-48 p-5 text-center">
-                        <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Berita 1"
-                            class="w-28 h-28 mx-auto rounded-full object-cover mb-3">
-                        <p class="font-semibold text-sm">Judul Berita</p>
-                        <p class="text-xs text-gray-500 mt-1">Type: Jurusan</p>
-                        <p class="text-xs text-gray-400 mt-1">{{ date('d F Y') }}</p>
-                    </div>
+    <!-- Search -->
+    <input
+        type="text"
+        placeholder="Search..."
+        class="w-full md:w-1/3 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+    />
 
-                    <!-- Berita 2 -->
-                    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition duration-200 w-48 p-5 text-center">
-                        <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Berita 2"
-                            class="w-28 h-28 mx-auto rounded-full object-cover mb-3">
-                        <p class="font-semibold text-sm">Event AI 2025</p>
-                        <p class="text-xs text-gray-500 mt-1">Teknologi</p>
-                        <p class="text-xs text-gray-400 mt-1">12 November 2025</p>
-                    </div>
-                </div>
-            </section>
+    <div class="flex gap-4 w-full md:w-auto">
 
-            <!-- LIST RESEARCH -->
-            <section id="list-research">
-                <h1 class="text-3xl font-bold text-center mb-10">
-                    List Research
-                </h1>
+        <!-- Category Filter -->
+        <select
+            class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+        >
+            <option value="">All Category</option>
+            <option>Berita</option>
+            <option>Research</option>
+            <option>Dokumentasi</option>
+        </select>
 
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10 justify-items-center">
-                    <!-- Research 1 -->
-                    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition duration-200 w-48 p-5 text-center">
-                        <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Research 1"
-                            class="w-28 h-28 mx-auto rounded-full object-cover mb-3">
-                        <p class="font-semibold text-sm">AI Robotics</p>
-                        <p class="text-xs text-gray-500 mt-1">Machine Learning</p>
-                        <p class="text-xs text-gray-400 mt-1">2025</p>
-                    </div>
-
-                    <!-- Research 2 -->
-                    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition duration-200 w-48 p-5 text-center">
-                        <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Research 2"
-                            class="w-28 h-28 mx-auto rounded-full object-cover mb-3">
-                        <p class="font-semibold text-sm">IoT Smart Home</p>
-                        <p class="text-xs text-gray-500 mt-1">Internet of Things</p>
-                        <p class="text-xs text-gray-400 mt-1">2024</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <!-- LIST DOKUMENTASI -->
-        <section id="list-research">
-            <h1 class="text-3xl font-bold text-center mb-10">
-                List Dokumentasi
-            </h1>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10 justify-items-center">
-                <!-- Research 1 -->
-                <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition duration-200 w-48 p-5 text-center">
-                    <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Research 1"
-                        class="w-28 h-28 mx-auto rounded-full object-cover mb-3">
-                    <p class="font-semibold text-sm">AI Robotics</p>
-                    <p class="text-xs text-gray-500 mt-1">Machine Learning</p>
-                    <p class="text-xs text-gray-400 mt-1">2025</p>
-                </div>
-
-                <!-- Research 2 -->
-                <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-lg transition duration-200 w-48 p-5 text-center">
-                    <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Research 2"
-                        class="w-28 h-28 mx-auto rounded-full object-cover mb-3">
-                    <p class="font-semibold text-sm">IoT Smart Home</p>
-                    <p class="text-xs text-gray-500 mt-1">Internet of Things</p>
-                    <p class="text-xs text-gray-400 mt-1">2024</p>
-                </div>
-            </div>
-        </section>
+        <!-- Year Filter -->
+        <select
+            class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+        >
+            <option value="">Year</option>
+            <option>2025</option>
+            <option>2024</option>
+            <option>2023</option>
+        </select>
     </div>
+
+</div>
+
+<!-- LIST BERITA -->
+<section id="list-berita">
+    <h1 class="text-3xl font-bold text-center mb-10">List Berita</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        @foreach ($news as $item)
+            <div class="bg-white border border-gray-200 rounded-xl shadow hover:shadow-md p-5 text-center">
+
+                <img src="{{ asset('storage/' . $item->image) }}"
+                     class="w-24 h-24 mx-auto rounded-full object-cover mb-3">
+
+                <p class="font-semibold">{{ $item->title }}</p>
+
+                <p class="text-xs text-gray-500"> {{ $item->type }}</p>
+
+                <p class="text-xs text-gray-400">
+                    {{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}
+                </p>
+
+            </div>
+        @endforeach
+
+    </div>
+</section>
+
+
+    <!-- LIST RESEARCH -->
+    <section id="list-research">
+        <h1 class="text-3xl font-bold text-center mb-10">List Research</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+            @foreach ($research as $item)
+                <div class="bg-white border border-gray-200 rounded-xl shadow hover:shadow-md p-5 text-center">
+
+                    <img src="{{ asset('storage/' . $item->image) }}"
+                        class="w-24 h-24 mx-auto rounded-full object-cover mb-3">
+
+                    <p class="font-semibold">{{ $item->title }}</p>
+
+                    <p class="text-xs text-gray-500">{{ $item->type }}</p>
+
+                    <p class="text-xs text-gray-400">
+                        {{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}
+                    </p>
+
+                </div>
+            @endforeach
+
+        </div>
+    </section>
+
+    <!-- LIST DOKUMENTASI -->
+    <section id="list-dokumentasi">
+        <h1 class="text-3xl font-bold text-center mb-10">List Dokumentasi</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+            @foreach ($documents as $item)
+                <div class="bg-white border border-gray-200 rounded-xl shadow hover:shadow-md p-5 text-center">
+
+                    <img src="{{ asset('storage/' . $item->image) }}"
+                        class="w-24 h-24 mx-auto rounded-full object-cover mb-3">
+
+                    <p class="font-semibold">{{ $item->title }}</p>
+
+                    <p class="text-xs text-gray-500">{{ $item->type }}</p>
+
+                    <p class="text-xs text-gray-400">
+                        {{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}
+                    </p>
+
+                </div>
+            @endforeach
+
+        </div>
+    </section>
+
+
+</div>
+
     </li>
     </div>
     <div class="flex items-center justify-center mt-4">

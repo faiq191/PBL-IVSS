@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
-  <link href="{{ secure_asset('assets/output.css') }}" rel="stylesheet">
+  <link href="{{ ('assets/output.css') }}" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -94,38 +94,26 @@
     <div class="h-16"></div>
 
 
- <!-- RESEARCH UNGGULAN -->
-    <section class="container mx-auto px-4 lg:px-14 mt-10">
+ <!-- DYNAMIC RESEARCH UNGGULAN -->
+ <section id="list-research">
+    <h1 class="text-3xl font-bold text-center mb-10">List Research</h1>
 
-      <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
-        <div class="font-bold text-2xl text-center md:text-left">
-          <p>Labs Research</p>
-        </div>
-        <a href="#" class="bg-primary px-5 py-2 rounded-full text-white font-semibold mt-4 md:mt-0">
-          Lihat Semua
-        </a>
-      </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
-      <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
+        @foreach ($research as $item)
+            <div class="bg-white border border-gray-200 rounded-xl shadow hover:shadow-md p-5 text-center">
+                <img src="{{ asset('storage/' . $item->image) }}"
+                     class="w-24 h-24 mx-auto rounded-full object-cover mb-3">
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Pemanfaatan Wireshark untuk Sniffing Komunikasi Data Berprotokol HTTP pada Jaringan Internet</p>
-          <p class="text-slate-400 text-sm">2021</p>
-        </div>
+                <p class="font-semibold">{{ $item->title }}</p>
+                <p class="text-xs text-gray-500">{{ $item->type }}</p>
+                <p class="text-xs text-gray-400">{{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}</p>
+            </div>
+        @endforeach
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Segmentasi berbasis k-means pada deteksi citra penyakit daun tanaman jagung</p>
-          <p class="text-slate-400 text-sm">2020</p>
-        </div>
+    </div>
+</section>
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Klasifikasi Jenis Kelamin Pada Citra Wajah Menggunakan Metode Naive Bayes</p>
-          <p class="text-slate-400 text-sm">2018</p>
-        </div>
-
-      </div>
-
-    </section>
 
     <!-- SCRIPT -->
     <script>

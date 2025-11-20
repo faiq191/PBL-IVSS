@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Documentation</title>
-  <link href="{{ secure_asset('assets/output.css') }}" rel="stylesheet">
+  <link href="{{ ('assets/output.css') }}" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -91,6 +91,25 @@
   </div>
 </div>
 
+ <!-- DYNAMIC DOCUMENTS UNGGULAN -->
+ <section id="list-research">
+    <h1 class="text-3xl font-bold text-center mb-10">List Document</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        @foreach ($documents as $item)
+            <div class="bg-white border border-gray-200 rounded-xl shadow hover:shadow-md p-5 text-center">
+                <img src="{{ asset('storage/' . $item->image) }}"
+                     class="w-24 h-24 mx-auto rounded-full object-cover mb-3">
+
+                <p class="font-semibold">{{ $item->title }}</p>
+                <p class="text-xs text-gray-500">{{ $item->type }}</p>
+                <p class="text-xs text-gray-400">{{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}</p>
+            </div>
+        @endforeach
+
+    </div>
+</section>
 
     <!-- SCRIPT -->
     <script>
