@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecturers</title>
-    <link href="{{ secure_asset('assets/output.css') }}" rel="stylesheet">
+    <link href="{{('assets/output.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -78,31 +78,40 @@
 
         <div class="h-16"></div>
         <div class="bg-white shadow-md rounded-lg p-8">
-            <form action="{{route('halaman.create')}}" method="POST">
+            <form action="{{ route('news.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <h1 class="text-2xl font-semibold">Create</h1>
+
                 <div class="mt-4">
                     <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-                    <input type="file" id="image" name="image" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
-                    <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
-                    <input type="text" id="title" name="title" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
-                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                    <textarea id="description" name="description" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary"></textarea>
+                    <input type="file" id="image" name="image"
+                        class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
+
+                    <label for="tittle" class="block text-sm font-medium text-gray-700 mt-4">Title</label>
+                    <input type="text" id="tittle" name="tittle"
+                        class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
+
+                    <label for="description" class="block text-sm font-medium text-gray-700 mt-4">Description</label>
+                    <textarea id="description" name="description"
+                        class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary"></textarea>
+
                     <label for="date" class="block text-sm font-medium text-gray-700 mt-4">Date</label>
-                    <input type="date" id="date" name="date" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
+                    <input type="date" id="date" name="date"
+                        class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
+
                     <label for="type" class="block text-sm font-medium text-gray-700 mt-4">Type</label>
-                    <select id="type" name="type" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
+                    <select id="type" name="type"
+                        class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
                         <option value="berita">Berita</option>
-                        <option value="pengumuman">Research</option>
-                        <option value="event">Dokumentasi</option>
+                        <option value="research">Research</option>
+                        <option value="dokumentasi">Dokumentasi</option>
                     </select>
                 </div>
-                <button type="submit" class="bg-primary px-8 py-2 rounded-full text-white font-semibold mt-4">Create</button>
+
+                <button type="submit"
+                    class="bg-primary px-8 py-2 rounded-full text-white font-semibold mt-4">Create</button>
             </form>
         </div>
-
-
-
 
         <!-- SCRIPT -->
         <script>

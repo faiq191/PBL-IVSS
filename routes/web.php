@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\halamanController;
+use App\Http\Controllers\newsController;
 
 route::middleware([])->group(function () {
     Route::get('/index', [halamanController::class, 'index'])->name('halaman.index');
@@ -18,4 +19,10 @@ route::middleware([])->group(function () {
     Route::get('/delete', [halamanController::class, 'delete'])->name('halaman.delete');
     Route::get('/headadmin', [halamanController::class, 'headadmin'])->name('halaman.headadmin');
     Route::get('/login', [halamanController::class, 'login'])->name('halaman.login');
+
+    //CRUD
+    Route::get('/create', [halamanController::class, 'create'])->name('halaman.create');
+
+    // Route untuk store news
+    Route::post('/news/store', [newsController::class, 'store'])->name('news.store');
 });
