@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link href="{{ secure_asset('assets/output.css') }}" rel="stylesheet">
 
     <!-- HILANGKAN ERROR GLOBAL DI ATAS -->
@@ -22,17 +22,17 @@
         <!-- Logo Section -->
         <div class="flex gap-4 items-center mb-6">
             <img src="{{ asset('assets/img/ROBOT.jpg') }}" class="h-14" alt="Logo">
-            <p class="font-bold text-3xl">Login</p>
+            <p class="font-bold text-3xl">Register</p>
         </div>
 
         <!-- Welcome Text -->
-        <p class="font-bold text-xl md:text-2xl mb-2 text-center">Selamat Datang Di Landasan Login!</p>
+        <p class="font-bold text-xl md:text-2xl mb-2 text-center">Buat Akun Baru!</p>
         <p class="text-slate-500 text-sm md:text-base font-medium mb-6 text-center">
-            Silahkan masuk untuk melanjutkan
+            Silahkan daftarkan akunmu terlebih dahulu
         </p>
 
-        <!-- LOGIN FORM -->
-        <form action="{{ route('doLogin') }}" method="POST" class="w-full">
+        <!-- REGISTER FORM -->
+        <form action="#" method="POST" class="w-full">
             @csrf
 
             <!-- USERNAME -->
@@ -46,14 +46,12 @@
                     @error('username') style="border:2px solid #ef4444 !important;" @enderror>
 
                 @error('username')
-                <p style="color:#ef4444;font-size:14px;margin-top:4px;">
-                    {{ $message }}
-                </p>
+                <p style="color:#ef4444;font-size:14px;margin-top:4px;">{{ $message }}</p>
                 @enderror
             </div>
 
             <!-- PASSWORD -->
-            <div class="flex flex-col w-full mb-6 gap-y-1">
+            <div class="flex flex-col w-full mb-5 gap-y-1">
                 <label class="text-slate-400 font-medium">Password</label>
                 <input type="password"
                     name="password"
@@ -62,17 +60,30 @@
                     @error('password') style="border:2px solid #ef4444 !important;" @enderror>
 
                 @error('password')
-                <p style="color:#ef4444;font-size:14px;margin-top:4px;">
-                    {{ $message }}
-                </p>
+                <p style="color:#ef4444;font-size:14px;margin-top:4px;">{{ $message }}</p>
                 @enderror
-
             </div>
 
-            <!-- LOGIN BUTTON -->
+            <!-- CONFIRM PASSWORD -->
+            <div class="flex flex-col w-full mb-5 gap-y-1">
+                <label class="text-slate-400 font-medium">Konfirmasi Password</label>
+                <input type="password"
+                    name="password_confirmation"
+                    placeholder="Ulangi Password Kamu"
+                    class="border p-3 rounded-xl font-medium focus:ring-1 focus:ring-primary"
+                    @error('password') style="border:2px solid #ef4444 !important;" @enderror>
+
+                @error('password')
+                <p style="color:#ef4444;font-size:14px;margin-top:4px;">
+                    Password confirmation doesn't match.
+                </p>
+                @enderror
+            </div>
+
+            <!-- REGISTER BUTTON -->
             <button type="submit"
                 class="bg-primary rounded-xl text-white w-full text-center py-3 font-semibold hover:bg-primary-dark transition">
-                Masuk
+                Daftar
             </button>
         </form>
 
@@ -83,14 +94,12 @@
             <div class="flex-grow border-t border-slate-300"></div>
         </div>
 
-        <!-- REGISTER BUTTON -->
-        <a href="{{ route('register') }}"
+        <!-- LOGIN BUTTON -->
+        <a href="{{ route('login') }}"
             class="bg-primary rounded-xl text-white w-3/4 mx-auto block text-center py-2 font-medium hover:bg-primary-dark transition">
-            Buat Akun
+            Masuk
         </a>
-
     </div>
-
 </body>
 
 </html>

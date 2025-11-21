@@ -20,6 +20,12 @@ class DocumentsController extends Controller
         return view('admin', compact('documents'));
     }
 
+    public function index()
+{
+    $documents = Documents::latest()->get();
+    return view('index', compact('documents'));
+}
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([

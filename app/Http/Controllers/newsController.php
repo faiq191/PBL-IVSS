@@ -18,6 +18,12 @@ public function news()
     return view('halaman.news', compact('news'));
 }
 
+public function index()
+{
+    $news = News::latest()->get();
+    return view('index', compact('news'));
+}
+
 public function admin()
 {
     $news = News::latest()->get();

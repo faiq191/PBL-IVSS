@@ -87,8 +87,8 @@
                     <input type="file" id="image" name="image"
                         class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
 
-                    <label for="tittle" class="block text-sm font-medium text-gray-700 mt-4">Title</label>
-                    <input type="text" id="tittle" name="tittle"
+                    <label for="title" class="block text-sm font-medium text-gray-700 mt-4">Title</label>
+                    <input type="text" id="title" name="title"
                         class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
 
                     <label for="description" class="block text-sm font-medium text-gray-700 mt-4">Description</label>
