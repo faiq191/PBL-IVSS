@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link href="{{ secure_asset('assets/output.css') }}" rel="stylesheet">
+    <link href="{{ ('assets/output.css') }}" rel="stylesheet">
 
     <!-- HILANGKAN ERROR GLOBAL DI ATAS -->
     <style>

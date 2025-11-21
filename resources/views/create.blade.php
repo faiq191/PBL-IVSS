@@ -46,36 +46,52 @@
         </nav>
 
         <div class="h-16"></div>
-        <div class="bg-white shadow-md rounded-lg p-8">
-            <form action="{{ route('news.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <h1 class="text-2xl font-semibold">Create</h1>
 
-                <div class="mt-4">
-                    <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-                    <input type="file" id="image" name="image"
-                        class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
+        </nav>
 
-                    <label for="tittle" class="block text-sm font-medium text-gray-700 mt-4">Title</label>
-                    <input type="text" id="tittle" name="tittle"
-                        class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
+    <div class="w-full max-w-2xl mx-auto mt-20 bg-white shadow-md rounded-lg p-8">
 
-                    <label for="description" class="block text-sm font-medium text-gray-700 mt-4">Description</label>
-                    <textarea id="description" name="description"
-                        class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary"></textarea>
+        <h1 class="text-2xl font-bold mb-6">Create Content</h1>
 
-                    <label for="date" class="block text-sm font-medium text-gray-700 mt-4">Date</label>
-                    <input type="date" id="date" name="date"
-                        class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
+<form action="{{ route('halaman.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
 
-                    <label for="type" class="block text-sm font-medium text-gray-700 mt-4">Type</label>
-                    <select id="type" name="type"
-                        class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
-                        <option value="berita">Berita</option>
-                        <option value="research">Research</option>
-                        <option value="dokumentasi">Dokumentasi</option>
-                    </select>
-                </div>
+    <label class="block text-sm font-medium text-gray-700 mt-4">Category</label>
+    <select id="category" name="category"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md">
+        <option value="news">News</option>
+        <option value="research">Research</option>
+        <option value="documents">Documentation</option>
+    </select>
+
+    <label class="block text-sm font-medium text-gray-700 mt-4">Image</label>
+    <input type="file" name="image"
+        class="block w-full px-3 py-2 border border-gray-300 rounded-md">
+
+    <label class="block text-sm font-medium text-gray-700 mt-4">Title</label>
+    <input type="text" name="title"
+        class="block w-full px-3 py-2 border border-gray-300 rounded-md">
+
+    <label class="block text-sm font-medium text-gray-700 mt-4">Description</label>
+    <textarea name="description"
+        class="block w-full px-3 py-2 border border-gray-300 rounded-md"
+        rows="4"></textarea>
+
+    <label class="block text-sm font-medium text-gray-700 mt-4">Date</label>
+    <input type="date" name="date"
+        class="block w-full px-3 py-2 border border-gray-300 rounded-md">
+
+    <!-- TYPE HERE -->
+    <label class="block text-sm font-medium text-gray-700 mt-4">Type</label>
+    <input type="text" name="type"
+        class="block w-full px-3 py-2 border border-gray-300 rounded-md"
+        placeholder="">
+
+    <div id="researchField" class="hidden">
+        <label class="block text-sm font-medium text-gray-700 mt-4">Research Type</label>
+        <input type="text" name="research_type"
+               class="block w-full px-3 py-2 border border-gray-300 rounded-md">
+    </div>
 
     <button type="submit"
         class="bg-primary px-8 py-2 rounded-full text-white font-semibold mt-6">
