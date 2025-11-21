@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lecturers</title>
-    <link href="{{ secure_asset('assets/output.css') }}" rel="stylesheet">
+    <title>Edits</title>
+    <link href="{{ asset('assets/output.css') }}" rel="stylesheet">
+
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -27,43 +28,12 @@
 
                 <!-- Menu -->
                 <ul id="menu" class="hidden lg:flex items-center gap-10 font-medium text-base">
-                    <li><a href="{{route('halaman.index') }}" class="text-primary hover:text-gray-600">Beranda</a></li>
-                    <li><a href="{{route('halaman.about') }}" class="hover:text-primary">About</a></li>
+                    <li><a href="{{route('halaman.admin') }}" class="text-primary hover:text-gray-600">Beranda</a></li>
 
-                    <!-- Research dropdown -->
-                    <li class="relative">
-                        <button class="dropdown-btn flex items-center gap-1 hover:text-primary focus:outline-none">
-                            Research
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-[2px]" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <ul
-                            class="dropdown-menu hidden absolute left-0 mt-2 bg-white shadow-lg rounded-lg w-44 py-2 z-[9999] border border-gray-100">
-                            <li><a href="{{route('halaman.research') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Main Research</a></li>
-                            <li><a href="{{route('halaman.documents') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Documentation</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- Members dropdown -->
-                    <li class="relative">
-                        <button class="dropdown-btn flex items-center gap-1 hover:text-primary focus:outline-none">
-                            Members
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-[2px]" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <ul
-                            class="dropdown-menu hidden absolute left-0 mt-2 bg-white shadow-lg rounded-lg w-44 py-2 z-[9999] border border-gray-100">
-                            <li><a href="{{route('halaman.lecturers') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Lecturers</a></li>
-                            <li><a href="{{route('halaman.students') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Students</a></li>
-                        </ul>
-                    </li>
 
                     <li><a href="{{route('halaman.news') }}" class="hover:text-primary">News</a></li>
-                    <li><a href="{{route('halaman.contacts') }}" class="hover:text-primary">Contacts</a></li>
+                    <li><a href="{{route('halaman.research') }}" class="hover:text-primary">Research</a></li>
+                    <li><a href="{{route('halaman.documents') }}" class="hover:text-primary">Dokumentasi</a></li>
                 </ul>
 
                 <!-- Search + Login -->
@@ -77,29 +47,57 @@
         </nav>
 
         <div class="h-16"></div>
-        <div class="bg-white shadow-md rounded-lg p-8">
-            <form action="{{route('halaman.create')}}" method="POST">
-                @csrf
-                <h1 class="text-2xl font-semibold">Edit</h1>
-                <div class="mt-4">
-                    <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
-                    <input type="text" id="title" name="title" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
-                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                    <textarea id="description" name="description" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary"></textarea>
-                    <label for="date" class="block text-sm font-medium text-gray-700 mt-4">Date</label>
-                    <input type="date" id="date" name="date" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
-                    <label for="type" class="block text-sm font-medium text-gray-700 mt-4">Type</label>
-                    <select id="type" name="type" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
-                        <option value="berita">Berita</option>
-                        <option value="pengumuman">Research</option>
-                    </select>
-                </div>
-                <button type="submit" class="bg-primary px-8 py-2 rounded-full text-white font-semibold mt-4">Edit</button>
-            </form>
+
+        </nav>
+
+    <div class="w-full max-w-2xl mx-auto mt-20 bg-white shadow-md rounded-lg p-8">
+
+        <h1 class="text-2xl font-bold mb-6">Edit Content</h1>
+
+<form action="{{ route('halaman.update', ['id' => $data->id, 'type' => $type]) }}"
+      method="POST"
+      enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
+
+
+    <h1 class="text-2xl font-bold mb-6">Edit {{ ucfirst($type) }}</h1>
+
+    <label class="block mt-4 font-medium">Category</label>
+    <select name="type" class="border rounded-md px-3 py-2 w-full">
+        <option value="news" {{ $type=='news' ? 'selected' : '' }}>News</option>
+        <option value="research" {{ $type=='research' ? 'selected' : '' }}>Research</option>
+        <option value="documents" {{ $type=='documents' ? 'selected' : '' }}>Documentation</option>
+    </select>
+
+    <label class="block mt-4 font-medium">Image</label>
+    <input type="file" name="image" class="border rounded-md px-3 py-2 w-full">
+
+    <img src="{{ asset('storage/'.$data->image) }}" class="w-40 mt-3 rounded-lg">
+
+    <label class="block mt-4 font-medium">Title</label>
+    <input type="text" name="title" value="{{ $data->title }}"
+           class="border rounded-md px-3 py-2 w-full">
+
+    <label class="block mt-4 font-medium">Description</label>
+    <textarea name="description" class="border rounded-md px-3 py-2 w-full"
+              rows="4">{{ $data->description }}</textarea>
+
+    <label class="block mt-4 font-medium">Date</label>
+    <input type="date" name="date" value="{{ $data->date }}"
+           class="border rounded-md px-3 py-2 w-full">
+    <button type="submit" class="bg-primary text-white p-3 mt-6 rounded-lg">
+        <div class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 14l7-7 7 7-7z" />
+            </svg>
+            <span class="ml-2">Update</span>
         </div>
+    </button>
+</form>
 
 
-
+<div>
 
         <!-- SCRIPT -->
         <script>

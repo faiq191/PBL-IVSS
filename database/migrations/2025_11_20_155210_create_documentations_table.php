@@ -11,7 +11,7 @@ return new class extends Migration
      */
 public function up()
 {
-    Schema::create('documentations', function (Blueprint $table) {
+    Schema::create('documents', function (Blueprint $table) {
         $table->id();
         $table->string('image')->nullable();
         $table->string('title');
@@ -28,6 +28,6 @@ public function up()
      */
     public function down(): void
     {
-        Schema::dropIfExists('documentations');
+        Schema::dropIfExists('documents');
     }
 };

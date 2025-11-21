@@ -31,10 +31,9 @@
           <li><a href="{{route('halaman.create') }}" class="hover:text-primary">Buat Berita</a></li>
 
 
-          <li><a href="{{route('halaman.news') }}" class="hover:text-primary">News</a></li>
-          <li><a href="{{route('halaman.research') }}" class="hover:text-primary">Research</a></li>
-          <li><a href="{{route('halaman.documents') }}" class="hover:text-primary">Dokumentasi</a></li>
-        </ul>
+                    <li><a href="{{route('halaman.news') }}" class="hover:text-primary">News</a></li>
+                    <li><a href="{{route('halaman.contacts') }}" class="hover:text-primary">Contacts</a></li>
+                </ul>
 
         <!-- Search + Login -->
         <div class="hidden lg:flex items-center gap-3">
@@ -49,163 +48,124 @@
 
     <div class="h-16"></div>
 
-    <!-- CONTENT -->
-    <div class="max-w-6xl mx-auto px-4 py-12 space-y-20">
+        <!-- CONTENT -->
+<div class="max-w-6xl mx-auto px-4 py-12 space-y-20">
+<!-- FILTER BAR -->
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
 
-      <!-- FILTER BAR -->
-      <form method="GET" action="{{ route('halaman.admin') }}" class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
-
-        <!-- Search -->
-        <input
-          type="text"
-          name="search"
-          value="{{ request('search') }}"
-          placeholder="Search..."
-          class="w-full md:w-1/3 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
+    <!-- Search -->
+    <input
+        type="text"
+        placeholder="Search..."
+        class="w-full md:w-1/3 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+    />
 
         <div class="flex gap-4 w-full md:w-auto">
 
-          <!-- Category Filter -->
-          <select
-            name="category"
-            class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
-            <option value="" {{ request('category') == '' ? 'selected' : '' }}>All Category</option>
-            <option value="Berita" {{ request('category') == 'Berita' ? 'selected' : '' }}>Berita</option>
-            <option value="Research" {{ request('category') == 'Research' ? 'selected' : '' }}>Research</option>
-            <option value="Dokumentasi" {{ request('category') == 'Dokumentasi' ? 'selected' : '' }}>Dokumentasi</option>
-          </select>
+        <!-- Category Filter -->
+        <select
+            class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+        >
+            <option value="">All Category</option>
+            <option>Berita</option>
+            <option>Research</option>
+            <option>Dokumentasi</option>
+        </select>
 
-          <!-- Year Filter -->
-          <select
-            name="year"
-            class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
+        <!-- Year Filter -->
+        <select
+            class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+        >
             <option value="">Year</option>
-            <option value="2025" {{ request('year') == '2025' ? 'selected' : '' }}>2025</option>
-            <option value="2024" {{ request('year') == '2024' ? 'selected' : '' }}>2024</option>
-            <option value="2023" {{ request('year') == '2023' ? 'selected' : '' }}>2023</option>
-          </select>
+            <option>2025</option>
+            <option>2024</option>
+            <option>2023</option>
+        </select>
+    </div>
 
-        </div>
+</div>
 
-      </form>
+<!-- LIST BERITA -->
+<section id="list-berita">
+    <h1 class="text-3xl font-bold text-center mb-10">List Berita</h1>
 
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
-      <!-- BERITA -->
-      <section class="container mx-auto px-4 lg:px-14 mt-10">
+        @foreach ($news as $item)
+            <div class="bg-white border border-gray-200 rounded-xl shadow hover:shadow-md p-5 text-center">
 
-        <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
-          <div class="font-bold text-2xl text-center md:text-left">
-            <p>Labs News</p>
-          </div>
-          </a>
-        </div>
+                <img src="{{ asset('storage/' . $item->image) }}"
+                     class="w-24 h-24 mx-auto rounded-full object-cover mb-3">
 
-        <!-- DYNAMIC NEWS SECTION -->
-        <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
+                <p class="font-semibold">{{ $item->title }}</p>
 
-          @foreach ($news as $item)
-          <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
+                <p class="text-xs text-gray-500"> {{ $item->type }}</p>
 
-            <img src="{{ asset('storage/' . $item->image) }}"
-              class="w-full h-40 object-cover rounded-lg mb-3">
+                <p class="text-xs text-gray-400">
+                    {{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}
+                </p>
 
-            <p class="font-bold text-base mb-1">
-              {{ $item->title }}
-            </p>
-
-            <p class="text-slate-400 text-sm">
-              {{ $item->date }}
-            </p>
-
-            <p class="text-slate-500 text-sm mt-1 line-clamp-3">
-              {{ $item->description }}
-            </p>
-
-          </div>
-          @endforeach
-
-        </div>
-
-      </section>
-
-
-      <!-- RESEARCH -->
-      <section class="container mx-auto px-4 lg:px-14 mt-10">
-
-        <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
-          <div class="font-bold text-2xl text-center md:text-left">
-            <p>Labs Research</p>
-          </div>
-          </a>
-        </div>
-
-        <!-- DYNAMIC RESEARCH SECTION -->
-        <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
-
-          @foreach ($research as $item)
-          <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-
-            <img src="{{ asset('storage/' . $item->image) }}"
-              class="w-full h-40 object-cover rounded-lg mb-3">
-
-            <p class="font-bold text-base mb-1">
-              {{ $item->title }}
-            </p>
-
-            <p class="text-slate-400 text-sm">
-              {{ $item->date }}
-            </p>
-
-            <p class="text-slate-500 text-sm mt-1 line-clamp-3">
-              {{ $item->description }}
-            </p>
-
-          </div>
-          @endforeach
-
-        </div>
-
-      </section>
-
-      <!-- DOKUMENTASI -->
-      <section class="container mx-auto px-4 lg:px-14 mt-10">
-
-        <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
-          <div class="font-bold text-2xl text-center md:text-left">
-            <p>Labs Documentation</p>
-          </div>
-          </a>
-        </div>
-
-        <!-- DYNAMIC RESEARCH SECTION -->
-        <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
-
-          @foreach ($documents as $item)
-          <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-
-            <img src="{{ asset('storage/' . $item->image) }}"
-              class="w-full h-40 object-cover rounded-lg mb-3">
-
-            <p class="font-bold text-base mb-1">
-              {{ $item->title }}
-            </p>
-
-            <p class="text-slate-400 text-sm">
-              {{ $item->date }}
-            </p>
-
-            <p class="text-slate-500 text-sm mt-1 line-clamp-3">
-              {{ $item->description }}
-            </p>
-
-          </div>
-          @endforeach
-
-        </div>
-
-      </section>
+            </div>
+        @endforeach
 
     </div>
+</section>
+
+
+    <!-- LIST RESEARCH -->
+    <section id="list-research">
+        <h1 class="text-3xl font-bold text-center mb-10">List Research</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+            @foreach ($research as $item)
+                <div class="bg-white border border-gray-200 rounded-xl shadow hover:shadow-md p-5 text-center">
+
+                    <img src="{{ asset('storage/' . $item->image) }}"
+                        class="w-24 h-24 mx-auto rounded-full object-cover mb-3">
+
+                    <p class="font-semibold">{{ $item->title }}</p>
+
+                    <p class="text-xs text-gray-500">{{ $item->type }}</p>
+
+                    <p class="text-xs text-gray-400">
+                        {{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}
+                    </p>
+
+                </div>
+            @endforeach
+
+        </div>
+    </section>
+
+    <!-- LIST DOKUMENTASI -->
+    <section id="list-dokumentasi">
+        <h1 class="text-3xl font-bold text-center mb-10">List Dokumentasi</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+            @foreach ($documents as $item)
+                <div class="bg-white border border-gray-200 rounded-xl shadow hover:shadow-md p-5 text-center">
+
+                    <img src="{{ asset('storage/' . $item->image) }}"
+                        class="w-24 h-24 mx-auto rounded-full object-cover mb-3">
+
+                    <p class="font-semibold">{{ $item->title }}</p>
+
+                    <p class="text-xs text-gray-500">{{ $item->type }}</p>
+
+                    <p class="text-xs text-gray-400">
+                        {{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}
+                    </p>
+
+                </div>
+            @endforeach
+
+        </div>
+    </section>
+
+
+</div>
 
     </li>
   </div>

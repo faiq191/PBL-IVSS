@@ -15,14 +15,27 @@ route::middleware([])->group(function () {
     Route::get('/news', [halamanController::class, 'news'])->name('halaman.news');
     Route::get('/contacts', [halamanController::class, 'contacts'])->name('halaman.contacts');
     Route::get('/admin', [halamanController::class, 'admin'])->name('halaman.admin');
-    Route::get('/edit', [halamanController::class, 'edit'])->name('halaman.edit');
+
+    // Create page
+    Route::get('/create', [halamanController::class, 'create'])->name('halaman.create');
+
+    // Store handler
+    Route::post('/store', [halamanController::class, 'store'])->name('halaman.store');
+
+
     Route::get('/delete', [halamanController::class, 'delete'])->name('halaman.delete');
     Route::get('/headadmin', [halamanController::class, 'headadmin'])->name('halaman.headadmin');
 
     //CRUD
     Route::get('/create', [halamanController::class, 'create'])->name('halaman.create');
-    Route::get('/edit/{id}', [halamanController::class, 'edit'])->name('edit');
-    Route::post('/edit/{id}', [halamanController::class, 'update'])->name('update');
+    // EDIT
+    Route::get('/edit/{type}/{id}', [halamanController::class, 'edit'])
+        ->name('halaman.edit');
+
+
+    // UPDATE
+    Route::put('/update/{id}/{type}', [halamanController::class, 'update'])->name('halaman.update');
+
     Route::get('/delete/{id}', [halamanController::class, 'delete'])->name('delete');
 
     // Route untuk store news

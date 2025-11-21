@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lecturers</title>
-  <link href="{{ secure_asset('assets/output.css') }}" rel="stylesheet">
+  <link href="{{ ('assets/output.css') }}" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -33,7 +33,7 @@
           <!-- Research dropdown -->
           <li class="relative">
             <button class="dropdown-btn flex items-center gap-1 hover:text-primary focus:outline-none">
-              Research
+              Activity
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-[2px]" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -41,7 +41,7 @@
             </button>
             <ul
               class="dropdown-menu hidden absolute left-0 mt-2 bg-white shadow-lg rounded-lg w-44 py-2 z-[9999] border border-gray-100">
-              <li><a href="{{route('halaman.research') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Main Research</a></li>
+              <li><a href="{{route('halaman.research') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Research</a></li>
               <li><a href="{{route('halaman.documents') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Documentation</a></li>
             </ul>
           </li>
@@ -75,109 +75,112 @@
 
       </div>
     </nav>
-    <!--  SWIPER SECTION -->
-    <div class="swiper-slide mb-10">
-      <div class="relative flex flex-col justify-end p-3 h-72 rounded-xl bg-cover bg-center bg-no-repeat overflow-hidden"
-        style='background-image: url("{{ asset('assets/img/image2.png') }}");'>
-        <div class="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[rgba(0,0,0,0.4)]"></div>
-        <div class="relative z-10 mb-3 pl-4">
-          <p class="text-3xl font-semibold text-white mt-1">
-            Laboratorium Intelligent Vision and Smart System
-          </p>
-          <div class="flex items-center gap-1 mt-1">
-            <p class="text-white text-xs">JTI Polinema</p>
-          </div>
+<!--  SWIPER SECTION -->
+<div class="swiper-slide mb-10">
+  <div class="relative flex flex-col justify-end p-3 h-72 rounded-xl bg-cover bg-center bg-no-repeat overflow-hidden"
+      style='background-image: url("{{ asset('assets/img/image2.png') }}");'>
+      <div class="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[rgba(0,0,0,0.4)]"></div>
+      <div class="relative z-10 mb-3 pl-4">
+        <p class="text-3xl font-semibold text-white mt-1">
+          Laboratorium Intelligent Vision and Smart System
+        </p>
+        <div class="flex items-center gap-1 mt-1">
+          <p class="text-white text-xs">JTI Polinema</p>
         </div>
       </div>
-    </div>
+  </div>
+</div>
 
     <div class="h-16"></div>
 
     <!-- CONTENT -->
-    <div class="container mx-auto px-4 lg:px-14 py-12">
-      <!-- Judul utama -->
-      <h1 class="text-3xl font-bold text-center mb-10">
-        Lab Members <span class="text-gray-500 text-lg"></span>
-      </h1>
+<div class="container mx-auto px-4 lg:px-20 py-16">
 
-      <!-- Kepala Lab -->
-      <h2 class="text-2xl font-bold text-center mb-6">Kepala Lab</h2>
-      <div class="flex justify-center mb-12">
-        <a href="https://scholar.google.com/citations?hl=en&user=Ysdl_MIAAAAJ" target="_blank"
-          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200 mx-4">
-          <img src="{{ asset('assets/img/Ulla-Delfana-Rosiani_197803272003122002.jpg') }}"
-            alt="Dr. Ulla Delfana Rosiani"
-            class="w-36 h-36 rounded-full object-cover object-center mb-4">
-          <h2 class="font-semibold text-base text-gray-800">Dr. Ulla Delfana Rosiani, ST., MT.</h2>
-          <p class="text-sm text-gray-500 mt-1">Kepala Lab</p>
-        </a>
-      </div>
-      <!-- Peneliti -->
-      <h2 class="text-2xl font-bold text-center mb-6">Peneliti</h2>
-      <div class="grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <h1 class="text-5xl font-bold text-center mb-16">Lab Members</h1>
 
-        <!-- Lecturer 2 -->
-        <a href="https://scholar.google.com/citations?hl=en&user=z3yHGr0AAAAJ" target="_blank"
-          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200">
-          <img src="{{ asset('assets/img/Mamluatul-Hani_ah_199002062019032013-scaled.jpg') }}"
-            alt="Mamluatul Hani’ah"
-            class="w-36 h-36 rounded-full object-cover object-center mb-4">
-          <h2 class="font-semibold text-base text-gray-800">Mamluatul Hani’ah, S.Kom., M.Kom.</h2>
-          <p class="text-sm text-gray-500 mt-1">Peneliti</p>
-        </a>
+    <h2 class="text-2xl font-semibold text-center mb-10">Kepala Lab</h2>
 
-        <!-- Lecturer 3 -->
-        <a href="https://scholar.google.com/citations?hl=en&user=z4yOSgUAAAAJ" target="_blank"
-          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200">
-          <img src="{{ asset('assets/img/Mungki-Astiningrum.jpg') }}"
-            alt="Mungki Astiningrum"
-            class="w-36 h-36 rounded-full object-cover object-center mb-4">
-          <h2 class="font-semibold text-base text-gray-800">Mungki Astiningrum, ST., M.Kom.</h2>
-          <p class="text-sm text-gray-500 mt-1">Peneliti</p>
-        </a>
-
-        <!-- Lecturer 4 -->
-        <a href="https://scholar.google.com/citations?hl=en&user=A1592kEAAAAJ" target="_blank"
-          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200">
-          <img src="{{ asset('assets/img/Rosa-Andrie-Asmara_2.jpg') }}"
-            alt="Prof. Dr. Eng. Rosa Andrie Asmara"
-            class="w-36 h-36 rounded-full object-cover object-center mb-4">
-          <h2 class="font-semibold text-base text-gray-800">Prof. Dr. Eng. Rosa Andrie Asmara, ST., MT.</h2>
-          <p class="text-sm text-gray-500 mt-1">Peneliti</p>
-        </a>
-
-        <!-- Lecturer 5 -->
-        <a href="https://scholar.google.com/citations?hl=en&user=g-DSiNsAAAAJ" target="_blank"
-          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200">
-          <img src="{{ asset('assets/img/Vivi-Nur-Wijayaningrum_199308112019032025-scaled.jpg') }}"
-            alt="Vivi Nur Wijayaningrum"
-            class="w-36 h-36 rounded-full object-cover object-center mb-4">
-          <h2 class="font-semibold text-base text-gray-800">Vivi Nur Wijayaningrum, S.Kom., M.Kom.</h2>
-          <p class="text-sm text-gray-500 mt-1">Peneliti</p>
-        </a>
-
-        <!-- Lecturer 6 -->
-        <a href="https://scholar.google.com/citations?user=W4xRFkQAAAAJ&hl=en" target="_blank"
-          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200">
-          <img src="{{ asset('assets/img/Wilda-Imama-Sabilla.jpg') }}"
-            alt="Wilda Imama Sabilla"
-            class="w-36 h-36 rounded-full object-cover object-center mb-4">
-          <h2 class="font-semibold text-base text-gray-800">Wilda Imama Sabilla, S.Kom., M.Kom.</h2>
-          <p class="text-sm text-gray-500 mt-1">Peneliti</p>
-        </a>
-
-        <!-- Lecturer 7 -->
-        <a href="https://scholar.google.com/citations?user=Hs9bkN0AAAAJ&hl=en" target="_blank"
-          class="bg-white border border-gray-200 rounded-xl shadow-md p-5 flex flex-col items-center justify-center text-center w-60 hover:shadow-xl transition transform hover:-translate-y-1 duration-200">
-          <img src="{{ asset('assets/img/Ely-Setyo-Astuti.jpg') }}"
-            alt="Dr. Ely Setyo Astuti"
-            class="w-36 h-36 rounded-full object-cover object-center mb-4">
-          <h2 class="font-semibold text-base text-gray-800">Dr. Ely Setyo Astuti, ST., MT.</h2>
-          <p class="text-sm text-gray-500 mt-1">Peneliti</p>
-        </a>
-
-      </div>
+    <div class="flex justify-center mb-20">
+        <div class="bg-white w-72 rounded-2xl shadow-lg p-8 flex flex-col items-center hover:shadow-xl transition">
+            <img src="{{ asset('assets/img/Ulla-Delfana-Rosiani_197803272003122002.jpg') }}"
+                 class="w-40 h-40 rounded-full object-cover mb-5">
+            <p class="font-bold text-center text-lg">Dr. Ulla Delfana Rosiani, ST., MT.</p>
+            <p class="text-gray-500 text-sm mt-1">Kepala Lab</p>
+        </div>
     </div>
+
+<!-- PENELITI SECTION -->
+<h2 class="text-2xl font-bold text-center mb-6">Peneliti</h2>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+
+    <!-- Lecturer Card -->
+    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+        <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+            <img src="{{ asset('assets/img/Mamluatul-Hani_ah_199002062019032013-scaled.jpg') }}"
+                 class="w-full h-full object-cover">
+        </div>
+        <h2 class="font-semibold text-base">Mamluatul Hani’ah, S.Kom., M.Kom.</h2>
+        <p class="text-sm text-gray-500 mt-1">Peneliti</p>
+    </div>
+
+    <!-- Lecturer Card -->
+    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+        <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+            <img src="{{ asset('assets/img/Mungki-Astiningrum.jpg') }}"
+                 class="w-full h-full object-cover">
+        </div>
+        <h2 class="font-semibold text-base">Mungki Astiningrum, ST., M.Kom.</h2>
+        <p class="text-sm text-gray-500 mt-1">Peneliti</p>
+    </div>
+
+    <!-- Lecturer Card -->
+    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+        <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+            <img src="{{ asset('assets/img/Rosa-Andrie-Asmara_2.jpg') }}"
+                 class="w-full h-full object-cover">
+        </div>
+        <h2 class="font-semibold text-base">Prof. Dr. Eng. Rosa Andrie Asmara, ST., MT.</h2>
+        <p class="text-sm text-gray-500 mt-1">Peneliti</p>
+    </div>
+
+    <!-- Lecturer Card -->
+    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+        <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+            <img src="{{ asset('assets/img/Vivi-Nur-Wijayaningrum_199308112019032025-scaled.jpg') }}"
+                 class="w-full h-full object-cover">
+        </div>
+        <h2 class="font-semibold text-base">Vivi Nur Wijayaningrum, S.Kom., M.Kom.</h2>
+        <p class="text-sm text-gray-500 mt-1">Peneliti</p>
+    </div>
+
+    <!-- Lecturer Card -->
+    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+        <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+            <img src="{{ asset('assets/img/Wilda-Imama-Sabilla.jpg') }}"
+                 class="w-full h-full object-cover">
+        </div>
+        <h2 class="font-semibold text-base">Wilda Imama Sabilla, S.Kom., M.Kom.</h2>
+        <p class="text-sm text-gray-500 mt-1">Peneliti</p>
+    </div>
+
+    <!-- Lecturer Card -->
+    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+        <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+            <img src="{{ asset('assets/img/Ely-Setyo-Astuti.jpg') }}"
+                 class="w-full h-full object-cover">
+        </div>
+        <h2 class="font-semibold text-base">Dr. Ely Setyo Astuti, ST., MT.</h2>
+        <p class="text-sm text-gray-500 mt-1">Peneliti</p>
+    </div>
+
+</div>
+
+
+    </div>
+
+</div>
+
 
     <!-- SCRIPT -->
     <script>

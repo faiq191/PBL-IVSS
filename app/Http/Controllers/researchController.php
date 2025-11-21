@@ -20,10 +20,15 @@ class ResearchController extends Controller
         return view('admin', compact('research'));
     }
 
+    public function index()
+    {
+        $research = Research::latest()->get();
+        return view('index', compact('research'));
+    }
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'image'       => 'required',
             'title'       => 'required',
             'type'        => 'required',
             'description' => 'required',
@@ -33,7 +38,6 @@ class ResearchController extends Controller
         $imagePath = $request->file('image')->store('research', 'public');
 
         Research::create([
-            'image'       => $imagePath,
             'title'       => $request->title,
             'type'        => $request->type,
             'description' => $request->description,

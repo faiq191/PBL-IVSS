@@ -27,43 +27,12 @@
 
                 <!-- Menu -->
                 <ul id="menu" class="hidden lg:flex items-center gap-10 font-medium text-base">
-                    <li><a href="{{route('halaman.index') }}" class="text-primary hover:text-gray-600">Beranda</a></li>
-                    <li><a href="{{route('halaman.about') }}" class="hover:text-primary">About</a></li>
+                    <li><a href="{{route('halaman.admin') }}" class="text-primary hover:text-gray-600">Beranda</a></li>
 
-                    <!-- Research dropdown -->
-                    <li class="relative">
-                        <button class="dropdown-btn flex items-center gap-1 hover:text-primary focus:outline-none">
-                            Research
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-[2px]" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <ul
-                            class="dropdown-menu hidden absolute left-0 mt-2 bg-white shadow-lg rounded-lg w-44 py-2 z-[9999] border border-gray-100">
-                            <li><a href="{{route('halaman.research') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Main Research</a></li>
-                            <li><a href="{{route('halaman.documents') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Documentation</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- Members dropdown -->
-                    <li class="relative">
-                        <button class="dropdown-btn flex items-center gap-1 hover:text-primary focus:outline-none">
-                            Members
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-[2px]" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <ul
-                            class="dropdown-menu hidden absolute left-0 mt-2 bg-white shadow-lg rounded-lg w-44 py-2 z-[9999] border border-gray-100">
-                            <li><a href="{{route('halaman.lecturers') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Lecturers</a></li>
-                            <li><a href="{{route('halaman.students') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Students</a></li>
-                        </ul>
-                    </li>
 
                     <li><a href="{{route('halaman.news') }}" class="hover:text-primary">News</a></li>
-                    <li><a href="{{route('halaman.contacts') }}" class="hover:text-primary">Contacts</a></li>
+                    <li><a href="{{route('halaman.research') }}" class="hover:text-primary">Research</a></li>
+                    <li><a href="{{route('halaman.documents') }}" class="hover:text-primary">Dokumentasi</a></li>
                 </ul>
 
                 <!-- Search + Login -->
@@ -87,8 +56,8 @@
                     <input type="file" id="image" name="image"
                         class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
 
-                    <label for="title" class="block text-sm font-medium text-gray-700 mt-4">Title</label>
-                    <input type="text" id="title" name="title"
+                    <label for="tittle" class="block text-sm font-medium text-gray-700 mt-4">Title</label>
+                    <input type="text" id="tittle" name="tittle"
                         class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-primary focus:border-primary">
 
                     <label for="description" class="block text-sm font-medium text-gray-700 mt-4">Description</label>
@@ -108,10 +77,13 @@
                     </select>
                 </div>
 
-                <button type="submit"
-                    class="bg-primary px-8 py-2 rounded-full text-white font-semibold mt-4">Create</button>
-            </form>
-        </div>
+    <button type="submit"
+        class="bg-primary px-8 py-2 rounded-full text-white font-semibold mt-6">
+        Create
+    </button>
+</form>
+
+<div>
 
         <!-- SCRIPT -->
         <script>

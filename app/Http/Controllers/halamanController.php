@@ -152,18 +152,18 @@ public function admin(Request $request)
     return view('admin', compact('news', 'research', 'documents'));
 }
 
-
-
-
     public function create()
     {
         return view('create');
     }
 
-    public function edit(Request $request, $id)
+    public function delete()
     {
-        $type = $request->type;
+        return view('delete');
+    }
 
+    public function edit($type, $id)
+    {
         if ($type === 'news') {
             $data = \App\Models\News::findOrFail($id);
         } elseif ($type === 'research') {
@@ -172,17 +172,40 @@ public function admin(Request $request)
             $data = \App\Models\Documents::findOrFail($id);
         }
 
-        return view('edit', [
-            'data' => $data,
-            'type' => $type
-        ]);
+        return view('edit', compact('data', 'type'));
     }
 
 
-    public function delete()
-    {
-        return view('delete');
+
+
+public function update(Request $request, $id, $type)
+{
+    if ($type === 'news') {
+        $data = \App\Models\News::findOrFail($id);
+    } elseif ($type === 'research') {
+        $data = \App\Models\Research::findOrFail($id);
+    } else {
+        $data = \App\Models\Documents::findOrFail($id);
     }
+
+    if ($request->hasFile('image')) {
+        $path = $request->file('image')->store('uploads', 'public');
+        $data->image = $path;
+    }
+
+    $data->title = $request->title;
+    $data->description = $request->description;
+    $data->date = $request->date;
+    $data->type = $request->type;
+
+    $data->save();
+
+    return redirect()->route('halaman.admin')->with('success', 'Updated!');
+}
+
+
+
+
 
     public function headadmin()
     {

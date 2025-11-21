@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class Research extends Model
 {
     protected $fillable = [
-        'image', 'title', 'type', 'date', 'description'
+         'title', 'type', 'date', 'description'
     ];
 }
 

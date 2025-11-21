@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
-  <link href="{{ secure_asset('assets/output.css') }}" rel="stylesheet">
+  <link href="{{ ('assets/output.css') }}" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -33,7 +33,7 @@
           <!-- Research dropdown -->
           <li class="relative">
             <button class="dropdown-btn flex items-center gap-1 hover:text-primary focus:outline-none">
-              Research
+              Activity
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-[2px]" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -41,7 +41,7 @@
             </button>
             <ul
               class="dropdown-menu hidden absolute left-0 mt-2 bg-white shadow-lg rounded-lg w-44 py-2 z-[9999] border border-gray-100">
-              <li><a href="{{route('halaman.research') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Main Research</a></li>
+              <li><a href="{{route('halaman.research') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Research</a></li>
               <li><a href="{{route('halaman.documents') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Documentation</a></li>
             </ul>
           </li>
@@ -75,21 +75,22 @@
 
       </div>
     </nav>
-    <!--  SWIPER SECTION -->
-    <div class="swiper-slide mb-10">
-      <div class="relative flex flex-col justify-end p-3 h-72 rounded-xl bg-cover bg-center bg-no-repeat overflow-hidden"
-        style='background-image: url("{{ asset('assets/img/image2.png') }}");'>
-        <div class="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[rgba(0,0,0,0.4)]"></div>
-        <div class="relative z-10 mb-3 pl-4">
-          <p class="text-3xl font-semibold text-white mt-1">
-            Laboratorium Intelligent Vision and Smart System
-          </p>
-          <div class="flex items-center gap-1 mt-1">
-            <p class="text-white text-xs">JTI Polinema</p>
-          </div>
+<!--  SWIPER SECTION -->
+<div class="swiper-slide mb-10">
+  <div class="relative flex flex-col justify-end p-3 h-72 rounded-xl bg-cover bg-center bg-no-repeat overflow-hidden"
+      style='background-image: url("{{ asset('assets/img/image2.png') }}");'>
+      <div class="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[rgba(0,0,0,0.4)]"></div>
+      <div class="relative z-10 mb-3 pl-4">
+        <p class="text-3xl font-semibold text-white mt-1">
+          Laboratorium Intelligent Vision and Smart System
+        </p>
+        <div class="flex items-center gap-1 mt-1">
+          <p class="text-white text-xs">JTI Polinema</p>
         </div>
       </div>
-    </div>
+  </div>
+</div>
+
 
     <div class="h-16"></div>
 
@@ -107,69 +108,79 @@
       </div>
     </section>
 
-
-
-    <!-- BERITA UNGGULAN -->
+       <!-- BERITA UNGGULAN -->
     <section class="container mx-auto px-4 lg:px-14 mt-10">
 
       <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
         <div class="font-bold text-2xl text-center md:text-left">
           <p>Labs News</p>
         </div>
-        <a href="{{  route('halaman.news') }}" class="bg-primary px-5 py-2 rounded-full text-white font-semibold mt-4 md:mt-0">
+        <a href="{{ route('halaman.news') }}" class="bg-primary px-5 py-2 rounded-full text-white font-semibold mt-4 md:mt-0">
           Lihat Semua
         </a>
       </div>
 
+      <!-- DYNAMIC NEWS SECTION -->
       <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Pemanfaatan Wireshark untuk Sniffing Komunikasi Data Berprotokol HTTP pada Jaringan Internet</p>
-          <p class="text-slate-400 text-sm">2021</p>
-        </div>
+        @foreach ($news as $item)
+          <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Segmentasi berbasis k-means pada deteksi citra penyakit daun tanaman jagung</p>
-          <p class="text-slate-400 text-sm">2020</p>
-        </div>
+            <img src="{{ asset('storage/' . $item->image) }}"
+                 class="w-full h-40 object-cover rounded-lg mb-3">
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Klasifikasi Jenis Kelamin Pada Citra Wajah Menggunakan Metode Naive Bayes</p>
-          <p class="text-slate-400 text-sm">2018</p>
-        </div>
+            <p class="font-bold text-base mb-1">
+              {{ $item->title }}
+            </p>
+
+            <p class="text-slate-400 text-sm">
+              {{ $item->date }}
+            </p>
+
+            <p class="text-slate-500 text-sm mt-1 line-clamp-3">
+              {{ $item->description }}
+            </p>
+
+          </div>
+        @endforeach
 
       </div>
 
     </section>
 
-    <!-- RESEARCH UNGGULAN -->
-    <section class="container mx-auto px-4 lg:px-14 mt-10 mb-10">
+  <!-- RESEARCH -->
+    <section class="container mx-auto px-4 lg:px-14 mt-10">
 
       <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
         <div class="font-bold text-2xl text-center md:text-left">
           <p>Labs Research</p>
         </div>
-        <a href="{{route('halaman.research') }}" class="bg-primary px-5 py-2 rounded-full text-white font-semibold mt-4 md:mt-0">
-          Lihat Semua
         </a>
       </div>
 
+      <!-- DYNAMIC RESEARCH SECTION -->
       <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Pemanfaatan Wireshark untuk Sniffing Komunikasi Data Berprotokol HTTP pada Jaringan Internet</p>
-          <p class="text-slate-400 text-sm">2021</p>
-        </div>
+        @foreach ($research as $item)
+          <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Segmentasi berbasis k-means pada deteksi citra penyakit daun tanaman jagung</p>
-          <p class="text-slate-400 text-sm">2020</p>
-        </div>
+            <img src="{{ asset('storage/' . $item->image) }}"
+                 class="w-full h-40 object-cover rounded-lg mb-3">
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Klasifikasi Jenis Kelamin Pada Citra Wajah Menggunakan Metode Naive Bayes</p>
-          <p class="text-slate-400 text-sm">2018</p>
-        </div>
+            <p class="font-bold text-base mb-1">
+              {{ $item->title }}
+            </p>
+
+            <p class="text-slate-400 text-sm">
+              {{ $item->date }}
+            </p>
+
+            <p class="text-slate-500 text-sm mt-1 line-clamp-3">
+              {{ $item->description }}
+            </p>
+
+          </div>
+        @endforeach
 
       </div>
 
