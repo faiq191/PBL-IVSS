@@ -22,8 +22,6 @@ route::middleware([])->group(function () {
     // Store handler
     Route::post('/store', [halamanController::class, 'store'])->name('halaman.store');
 
-
-    Route::get('/delete', [halamanController::class, 'delete'])->name('halaman.delete');
     Route::get('/headadmin', [halamanController::class, 'headadmin'])->name('halaman.headadmin');
 
     //CRUD
@@ -36,7 +34,8 @@ route::middleware([])->group(function () {
     // UPDATE
     Route::put('/update/{id}/{type}', [halamanController::class, 'update'])->name('halaman.update');
 
-    Route::get('/delete/{id}', [halamanController::class, 'delete'])->name('delete');
+    Route::delete('/delete/{id}/{type}', [halamanController::class, 'delete'])->name('halaman.delete');
+
 
     // Route untuk store news
     Route::post('/news/store', [newsController::class, 'store'])->name('news.store');

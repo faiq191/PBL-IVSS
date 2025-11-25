@@ -157,10 +157,21 @@ public function admin(Request $request)
         return view('create');
     }
 
-    public function delete()
+    public function delete($id, $type)
     {
-        return view('delete');
+        if ($type === 'news') {
+            $data = \App\Models\News::findOrFail($id);
+        } elseif ($type === 'research') {
+            $data = \App\Models\Research::findOrFail($id);
+        } else {
+            $data = \App\Models\Documents::findOrFail($id);
+        }
+
+        $data->delete();
+
+        return redirect()->route('halaman.admin')->with('success', 'Deleted successfully');
     }
+
 
     public function edit($type, $id)
     {
