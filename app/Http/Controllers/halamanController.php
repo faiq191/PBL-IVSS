@@ -187,6 +187,55 @@ public function admin(Request $request)
     }
 
 
+public function store(Request $request)
+{
+    $request->validate([
+        'category' => 'required',
+        'title' => 'required',
+        'description' => 'required',
+        'date' => 'required|date',
+    ]);
+
+    // Upload image
+    $imagePath = null;
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('uploads', 'public');
+    }
+
+    // Handle by category
+    if ($request->category === 'news') {
+        \App\Models\News::create([
+            'image' => $imagePath,
+            'title' => $request->title,
+            'description' => $request->description,
+            'date' => $request->date,
+            'type' => $request->type ?? null,
+        ]);
+    }
+
+    elseif ($request->category === 'research') {
+        \App\Models\Research::create([
+            'image' => $imagePath,
+            'title' => $request->title,
+            'description' => $request->description,
+            'date' => $request->date,
+            'type' => $request->type ?? null,
+            'research_type' => $request->research_type ?? null,
+        ]);
+    }
+
+    else { // documents
+        \App\Models\Documents::create([
+            'image' => $imagePath,
+            'title' => $request->title,
+            'description' => $request->description,
+            'date' => $request->date,
+            'type' => $request->type ?? null,
+        ]);
+    }
+
+    return redirect()->route('halaman.admin')->with('success', 'Created successfully');
+}
 
 
 public function update(Request $request, $id, $type)
