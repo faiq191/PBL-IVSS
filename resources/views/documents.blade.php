@@ -91,21 +91,24 @@
   </div>
 </div>
 
- <!-- DYNAMIC DOCUMENTS UNGGULAN -->
- <section id="list-research">
-    <h1 class="text-3xl font-bold text-center mb-10">List Document</h1>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+ <!-- DYNAMIC DOCUMENTS SECTION -->
+    <div class="h-96 overflow-y-auto pr-3 space-y-5">
 
         @foreach ($documents as $item)
-            <div class="bg-white border border-gray-200 rounded-xl shadow hover:shadow-md p-5 text-center">
-                <img src="{{ asset('storage/' . $item->image) }}"
-                     class="w-24 h-24 mx-auto rounded-full object-cover mb-3">
+        <div class="border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300">
 
-                <p class="font-semibold">{{ $item->title }}</p>
-                <p class="text-xs text-gray-500">{{ $item->type }}</p>
-                <p class="text-xs text-gray-400">{{ \Carbon\Carbon::parse($item->date)->format('d F Y') }}</p>
-            </div>
+            <img src="{{ asset('storage/' . $item->image) }}"
+                class="w-full h-28 object-cover rounded-lg mb-3">
+
+            <p class="font-bold text-base mb-1">{{ $item->title }}</p>
+
+            <p class="text-slate-400 text-sm">{{ $item->date }}</p>
+
+            <p class="text-slate-500 text-sm mt-1 line-clamp-3">
+                {{ $item->description }}
+            </p>
+
+        </div>
         @endforeach
 
     </div>
