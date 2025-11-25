@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\halamanController;
-use App\Http\Controllers\newsController;
 use App\Http\Controllers\UserController;
 
 route::middleware([])->group(function () {
@@ -35,10 +34,6 @@ route::middleware([])->group(function () {
     Route::put('/update/{id}/{type}', [halamanController::class, 'update'])->name('halaman.update');
 
     Route::delete('/delete/{id}/{type}', [halamanController::class, 'delete'])->name('halaman.delete');
-
-
-    // Route untuk store news
-    Route::post('/news/store', [newsController::class, 'store'])->name('news.store');
 
     // Route reggister
     Route::get('/register', [UserController::class, 'register'])->name('register');
