@@ -18,7 +18,7 @@
 
         <!-- Logo -->
         <a href="#" class="flex items-center gap-2" onclick="return false;">
-          <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
+          <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
           <p class="text-lg lg:text-xl font-bold" href="{{   route('halaman.index') }}">IVSS</p>
         </a>
 

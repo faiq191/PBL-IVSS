@@ -21,7 +21,7 @@
 
         <!-- Logo Section -->
         <div class="flex gap-4 items-center mb-6">
-            <img src="{{ asset('assets/img/ROBOT.jpg') }}" class="h-14" alt="Logo">
+            <img src="{{ asset('assets/img/logo.png') }}" class="h-14" alt="Logo">
             <p class="font-bold text-3xl">Register</p>
         </div>
 

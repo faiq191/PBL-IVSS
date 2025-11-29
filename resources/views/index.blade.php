@@ -18,7 +18,7 @@
 
         <!-- Logo -->
         <a href="#" class="flex items-center gap-2" onclick="return false;">
-          <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
+          <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
           <p class="text-lg lg:text-xl font-bold" href="{{   route('halaman.index') }}">IVSS</p>
         </a>
 
@@ -120,27 +120,26 @@
           Lihat Semua
         </a>
       </div>
+    <div class="h-96 overflow-y-auto pr-3 space-y-5">
 
-      <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
+        @foreach ($news as $item)
+        <div class="border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300">
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Pemanfaatan Wireshark untuk Sniffing Komunikasi Data Berprotokol HTTP pada Jaringan Internet</p>
-          <p class="text-slate-400 text-sm">2021</p>
+
+            <p class="font-bold text-base mb-1">{{ $item->title }}</p>
+
+            <p class="text-slate-400 text-sm">{{ $item->date }}</p>
+
+            <p class="text-slate-500 text-sm mt-1 line-clamp-3">
+                {{ $item->description }}
+            </p>
+
         </div>
+        @endforeach
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Segmentasi berbasis k-means pada deteksi citra penyakit daun tanaman jagung</p>
-          <p class="text-slate-400 text-sm">2020</p>
-        </div>
+    </div>
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Klasifikasi Jenis Kelamin Pada Citra Wajah Menggunakan Metode Naive Bayes</p>
-          <p class="text-slate-400 text-sm">2018</p>
-        </div>
-
-      </div>
-
-    </section>
+</section>
 
     <!-- RESEARCH UNGGULAN -->
     <section class="container mx-auto px-4 lg:px-14 mt-10 mb-10">
@@ -153,27 +152,25 @@
           Lihat Semua
         </a>
       </div>
+    <div class="h-96 overflow-y-auto pr-3 space-y-5">
 
-      <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
+        @foreach ($research as $item)
+        <div class="border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300">
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Pemanfaatan Wireshark untuk Sniffing Komunikasi Data Berprotokol HTTP pada Jaringan Internet</p>
-          <p class="text-slate-400 text-sm">2021</p>
+
+            <p class="font-bold text-base mb-1">{{ $item->title }}</p>
+
+            <p class="text-slate-400 text-sm">{{ $item->date }}</p>
+
+            <p class="text-slate-500 text-sm mt-1 line-clamp-3">
+                {{ $item->description }}
+            </p>
+
         </div>
+        @endforeach
 
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Segmentasi berbasis k-means pada deteksi citra penyakit daun tanaman jagung</p>
-          <p class="text-slate-400 text-sm">2020</p>
-        </div>
-
-        <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-          <p class="font-bold text-base mb-1">Klasifikasi Jenis Kelamin Pada Citra Wajah Menggunakan Metode Naive Bayes</p>
-          <p class="text-slate-400 text-sm">2018</p>
-        </div>
-
-      </div>
-
-    </section>
+    </div>
+</section>
 
     <!-- SCRIPT -->
     <script>

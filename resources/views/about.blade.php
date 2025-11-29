@@ -18,7 +18,7 @@
 
         <!-- Logo -->
         <a href="#" class="flex items-center gap-2" onclick="return false;">
-          <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
+          <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
           <p class="text-lg lg:text-xl font-bold" href="{{   route('halaman.index') }}">IVSS</p>
         </a>
 
@@ -100,7 +100,7 @@
 
          <!-- ITEM 1 -->
          <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
-           <img src="{{ asset('assets/icons/table.jpg') }}" class="mx-auto w-14 mb-3" alt="">
+           <img src="{{ asset('assets/img/desk.png') }}" class="mx-auto w-14 mb-3" alt="">
            <h3 class="font-bold text-lg">Meja & Kursi</h3>
            <p class="text-sm text-gray-600 mt-2">
              Perabot dasar untuk menunjang kenyamanan belajar, praktikum, dan riset.
@@ -109,7 +109,7 @@
 
          <!-- ITEM 2 -->
          <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
-           <img src="{{ asset('assets/icons/ac.jpg') }}" class="mx-auto w-14 mb-3" alt="">
+           <img src="{{ asset('assets/img/air-conditioner.png') }}" class="mx-auto w-14 mb-3" alt="">
            <h3 class="font-bold text-lg">AC</h3>
            <p class="text-sm text-gray-600 mt-2">
              Pendingin ruangan untuk menjaga suhu ruang tetap nyaman selama proses belajar dan menjaga keandalan peralatan.
@@ -118,7 +118,7 @@
 
          <!-- ITEM 3 -->
          <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
-           <img src="{{ asset('assets/icons/mushola.jpg') }}" class="mx-auto w-14 mb-3" alt="">
+           <img src="{{ asset('assets/img/mosque.png') }}" class="mx-auto w-14 mb-3" alt="">
            <h3 class="font-bold text-lg">Area Mushola</h3>
            <p class="text-sm text-gray-600 mt-2">
              Fasilitas khusus untuk kegiatan ibadah/sholat.
@@ -127,7 +127,7 @@
 
          <!-- ITEM 4 -->
          <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
-           <img src="{{ asset('assets/icons/water.jpg') }}" class="mx-auto w-14 mb-3" alt="">
+           <img src="{{ asset('assets/img/water-dispenser.png') }}" class="mx-auto w-14 mb-3" alt="">
            <h3 class="font-bold text-lg">Air Mineral</h3>
            <p class="text-sm text-gray-600 mt-2">
              Air minum untuk menjaga hidrasi dan kenyamanan pengguna fasilitas.
@@ -136,7 +136,7 @@
 
          <!-- ITEM 5 -->
          <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
-           <img src="{{ asset('assets/icons/computer.jpg') }}" class="mx-auto w-14 mb-3" alt="">
+           <img src="{{ asset('assets/img/responsive.png') }}" class="mx-auto w-14 mb-3" alt="">
            <h3 class="font-bold text-lg">Komputer Desktop</h3>
            <p class="text-sm text-gray-600 mt-2">
              Perangkat komputer standar yang digunakan sebagai stasiun kerja untuk pemrosesan data, pengujian, dan riset.
@@ -145,7 +145,7 @@
 
          <!-- ITEM 6 -->
          <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
-           <img src="{{ asset('assets/icons/camera.jpg') }}" class="mx-auto w-14 mb-3" alt="">
+           <img src="{{ asset('assets/img/dslr-camera.png') }}" class="mx-auto w-14 mb-3" alt="">
            <h3 class="font-bold text-lg">Camera DLSR</h3>
            <p class="text-sm text-gray-600 mt-2">
              Kamera berkualitas tinggi untuk kebutuhan pengambilan data visual beresolusi tinggi dalam penelitian.
@@ -154,7 +154,7 @@
 
          <!-- ITEM 7 -->
          <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
-           <img src="{{ asset('assets/icons/realsense.jpg') }}" class="mx-auto w-14 mb-3" alt="">
+           <img src="{{ asset('assets/img/intel.png') }}" class="mx-auto w-14 mb-3" alt="">
            <h3 class="font-bold text-lg">Intel RealSense D415</h3>
            <p class="text-sm text-gray-600 mt-2">
              Kamera kedalaman (3D) dan visual, vital untuk riset Computer Vision dan Sistem Cerdas.
@@ -163,7 +163,7 @@
 
          <!-- ITEM 8 -->
          <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
-           <img src="{{ asset('assets/icons/fps.jpg') }}" class="mx-auto w-14 mb-3" alt="">
+           <img src="{{ asset('assets/img/dslr-camera.png') }}" class="mx-auto w-14 mb-3" alt="">
            <h3 class="font-bold text-lg">Camera 260fps</h3>
            <p class="text-sm text-gray-600 mt-2">
              Kamera kecepatan tinggi yang mampu menangkap gerakan cepat, digunakan untuk analisis gerak mendetail.
@@ -172,7 +172,7 @@
 
          <!-- ITEM 9 -->
          <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
-           <img src="{{ asset('assets/icons/lamp.jpg') }}" class="mx-auto w-14 mb-3" alt="">
+           <img src="{{ asset('assets/img/bulb.png') }}" class="mx-auto w-14 mb-3" alt="">
            <h3 class="font-bold text-lg">Peralatan Lampu</h3>
            <p class="text-sm text-gray-600 mt-2">
              Perangkat pencahayaan untuk memastikan kondisi pengambilan data visual tetap optimal.
@@ -181,7 +181,7 @@
 
          <!-- ITEM 10 -->
          <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
-           <img src="{{ asset('assets/icons/box.jpg') }}" class="mx-auto w-14 mb-3" alt="">
+           <img src="{{ asset('assets/img/box.png') }}" class="mx-auto w-14 mb-3" alt="">
            <h3 class="font-bold text-lg">Box Pengambilan Data</h3>
            <p class="text-sm text-gray-600 mt-2">
              Wadah khusus untuk mengisolasi atau mengontrol lingkungan saat pengambilan data riset.
@@ -190,7 +190,7 @@
 
          <!-- ITEM 11 -->
          <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
-           <img src="{{ asset('assets/icons/openmv.jpg') }}" class="mx-auto w-14 mb-3" alt="">
+           <img src="{{ asset('assets/img/micro.png') }}" class="mx-auto w-14 mb-3" alt="">
            <h3 class="font-bold text-lg">Open-MVCamH7</h3>
            <p class="text-sm text-gray-600 mt-2">
              Kamera mikrokontroler untuk riset Computer Vision dan Machine Learning embedded.
