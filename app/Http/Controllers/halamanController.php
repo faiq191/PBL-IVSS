@@ -196,46 +196,46 @@ public function store(Request $request)
         'date' => 'required|date',
     ]);
 
-    // Upload image
     $imagePath = null;
     if ($request->hasFile('image')) {
         $imagePath = $request->file('image')->store('uploads', 'public');
     }
 
-    // Handle by category
+    // NEWS
     if ($request->category === 'news') {
         \App\Models\News::create([
             'image' => $imagePath,
             'title' => $request->title,
             'description' => $request->description,
             'date' => $request->date,
-            'type' => $request->type ?? null,
+            'type' => $request->type ?? null, // OK because news table has type
         ]);
     }
 
+    // RESEARCH
     elseif ($request->category === 'research') {
         \App\Models\Research::create([
             'image' => $imagePath,
             'title' => $request->title,
             'description' => $request->description,
             'date' => $request->date,
-            'type' => $request->type ?? null,
-            'research_type' => $request->research_type ?? null,
+            'research_type' => $request->research_type,  // Only allowed ENUM
         ]);
     }
 
-    else { // documents
+    // DOCUMENTS
+    else {
         \App\Models\Documents::create([
             'image' => $imagePath,
             'title' => $request->title,
             'description' => $request->description,
             'date' => $request->date,
-            'type' => $request->type ?? null,
         ]);
     }
 
     return redirect()->route('halaman.admin')->with('success', 'Created successfully');
 }
+
 
 
 public function update(Request $request, $id, $type)
@@ -249,34 +249,81 @@ public function update(Request $request, $id, $type)
     }
 
     if ($request->hasFile('image')) {
-        $path = $request->file('image')->store('uploads', 'public');
-        $data->image = $path;
+        $data->image = $request->file('image')->store('uploads', 'public');
     }
 
     $data->title = $request->title;
     $data->description = $request->description;
     $data->date = $request->date;
-    $data->type = $request->type;
+
+    if ($type === 'news') {
+        $data->type = $request->type;
+    }
+
+    if ($type === 'research') {
+        $data->research_type = $request->research_type;
+    }
 
     $data->save();
 
     return redirect()->route('halaman.admin')->with('success', 'Updated!');
 }
 
-
-
-
-
-    public function headadmin()
+    public function headadmin(Request $request)
     {
-        return view('headadmin');
-    }
+        $search     = $request->search;
+        $category   = $request->category;
+        $year       = $request->year;
+        $pendingUsers = \App\Models\User::where('status', 'pending')->get();
 
+        // NEWS
+        $news = \App\Models\News::query();
+        if ($search) {
+            $news->where(function($q) use ($search) {
+                $q->where('title', 'like', "%$search%")
+                  ->orWhere('description', 'like', "%$search%");
+            });
+        }
+        if ($category === 'Berita') {
+            $news->whereNotNull('id');
+        }
+        if ($year) {
+            $news->whereYear('date', $year);
+        }
+        $news = $news->orderBy('date', 'desc')->get();
 
-    /** Login Page */
+        // RESEARCH
+        $research = \App\Models\Research::query();
+        if ($search) {
+            $research->where(function($q) use ($search) {
+                $q->where('title', 'like', "%$search%")
+                  ->orWhere('description', 'like', "%$search%");
+            });
+        }
+        if ($category === 'Research') {
+            $research->whereNotNull('id');
+        }
+        if ($year) {
+            $research->whereYear('date', $year);
+        }
+        $research = $research->orderBy('date', 'desc')->get();
 
-    public function login()
-    {
-        return view('login');
+        // DOCUMENTS
+        $documents = \App\Models\Documents::query();
+        if ($search) {
+            $documents->where(function($q) use ($search) {
+                $q->where('title', 'like', "%$search%")
+                  ->orWhere('description', 'like', "%$search%");
+            });
+        }
+        if ($category === 'Dokumentasi') {
+            $documents->whereNotNull('id');
+        }
+        if ($year) {
+            $documents->whereYear('date', $year);
+        }
+        $documents = $documents->orderBy('date', 'desc')->get();
+
+        return view('headadmin', compact('news', 'research', 'documents', 'pendingUsers'));
     }
 }

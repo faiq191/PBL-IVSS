@@ -39,7 +39,36 @@
                 <div class="hidden lg:flex items-center gap-3">
                     <input type="text" placeholder="Cari berita..."
                         class="border border-slate-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
-                    <a href="#" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">Masuk</a>
+                    @auth
+                    {{-- Jika user sudah login --}}
+
+                    @if (Auth::user()->role === 'admin')
+                        <a href="{{ route('halaman.admin') }}" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
+                            Admin Panel
+                        </a>
+                    @else
+                        <span class="text-primary font-semibold">
+                            {{ Auth::user()->username }}
+                        </span>
+                    @endif
+
+                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit" class="bg-red-500 px-6 py-2 rounded-full text-white font-semibold ml-4">
+                            Logout
+                        </button>
+                    </form>
+                @else
+                    {{-- Jika user BELUM login --}}
+                    <a href="{{ route('login') }}" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
+                        Masuk
+                    </a>
+
+                    <a href="{{ route('register') }}" class="bg-gray-300 px-8 py-2 rounded-full text-black font-semibold ml-2">
+                        Daftar
+                    </a>
+                @endauth
+
                 </div>
 
             </div>

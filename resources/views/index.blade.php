@@ -1,16 +1,17 @@
-<!doctype html>
-<html>
+ <!doctype html>
+ <html>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <link href="{{('assets/output.css') }}" rel="stylesheet">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Home</title>
+  <link href="{{ asset('assets/output.css') }}" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-</head>
 
-<body>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+ </head>
+
+ <body>
   <div class="w-full">
     <!--  NAVBAR -->
     <nav class="sticky top-0 z-50 bg-white shadow-sm">
@@ -33,7 +34,7 @@
           <!-- Research dropdown -->
           <li class="relative">
             <button class="dropdown-btn flex items-center gap-1 hover:text-primary focus:outline-none">
-              Research
+              Activity
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-[2px]" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -41,7 +42,7 @@
             </button>
             <ul
               class="dropdown-menu hidden absolute left-0 mt-2 bg-white shadow-lg rounded-lg w-44 py-2 z-[9999] border border-gray-100">
-              <li><a href="{{route('halaman.research') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Main Research</a></li>
+              <li><a href="{{route('halaman.research') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Research</a></li>
               <li><a href="{{route('halaman.documents') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Documentation</a></li>
             </ul>
           </li>
@@ -70,26 +71,54 @@
         <div class="hidden lg:flex items-center gap-3">
           <input type="text" placeholder="Cari berita..."
             class="border border-slate-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
-          <a href="#" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">Masuk</a>
+                    @auth
+            {{-- Jika user sudah login --}}
+
+            @if (Auth::user()->role === 'admin')
+                <a href="{{ route('halaman.admin') }}" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
+                    Admin Panel
+                </a>
+            @else
+                <span class="text-primary font-semibold">
+                    {{ Auth::user()->username }}
+                </span>
+            @endif
+
+            <form action="{{ route('logout') }}" method="POST" class="inline">
+                @csrf
+                <button type="submit" class="bg-red-500 px-6 py-2 rounded-full text-white font-semibold ml-4">
+                    Logout
+                </button>
+            </form>
+        @else
+            {{-- Jika user BELUM login --}}
+            <a href="{{ route('login') }}" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
+                Masuk
+            </a>
+
+            <a href="{{ route('register') }}" class="bg-gray-300 px-8 py-2 rounded-full text-black font-semibold ml-2">
+                Daftar
+            </a>
+        @endauth
         </div>
 
       </div>
     </nav>
-    <!--  SWIPER SECTION -->
-    <div class="swiper-slide mb-10">
-      <div class="relative flex flex-col justify-end p-3 h-72 rounded-xl bg-cover bg-center bg-no-repeat overflow-hidden"
-        style='background-image: url("{{ asset('assets/img/image2.png') }}");'>
-        <div class="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[rgba(0,0,0,0.4)]"></div>
-        <div class="relative z-10 mb-3 pl-4">
-          <p class="text-3xl font-semibold text-white mt-1">
-            Laboratorium Intelligent Vision and Smart System
-          </p>
-          <div class="flex items-center gap-1 mt-1">
-            <p class="text-white text-xs">JTI Polinema</p>
-          </div>
+<!--  SWIPER SECTION -->
+<div class="swiper-slide mb-10">
+<div class="relative flex flex-col justify-end p-3 h-20 rounded-xl bg-cover bg-center bg-no-repeat overflow-hidden"
+      style='background-image: url("{{ asset('assets/img/image2.png') }}");'>
+      <div class="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[rgba(0,0,0,0.4)]"></div>
+      <div class="relative z-10 mb-3 pl-4">
+        <p class="text-3xl font-semibold text-white mt-1">
+          Laboratorium Intelligent Vision and Smart System
+        </p>
+        <div class="flex items-center gap-1 mt-1">
+          <p class="text-white text-xs">JTI Polinema</p>
         </div>
       </div>
-    </div>
+  </div>
+</div>
 
     <div class="h-16"></div>
 

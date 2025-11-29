@@ -48,12 +48,26 @@ class UserController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect("admin");
-        } else {
-            return redirect()->route('login')
-                ->with('error', 'Username atau Password salah');
+
+            // ROLE CHECK
+            $role = Auth::user()->role;
+            // Jika Admin Berita
+            if ($role === 'admin_berita') {
+                return redirect('/admin');          // admin berita → /admin
+            }
+            // Jika Kepala Admin
+            if ($role === 'admin_kepala') {
+                return redirect('/headadmin');      // kepala admin → /headadmin
+            }
+
+            // Jika Member B aja
+            return redirect('/index');
         }
+
+        return redirect()->route('login')
+            ->with('error', 'Username atau Password salah');
     }
+
 
     // Logout
     public function doLogout(Request $request)
@@ -77,4 +91,22 @@ class UserController extends Controller
 
         echo "User admin_lab berhasil ditambahkan!";
     }
+        public function approve($id)
+    {
+        $user = User::findOrFail($id);
+        $user->status = 'approved';
+        $user->save();
+
+        return redirect()->route('halaman.headadmin')->with('success', 'User approved');
+    }
+
+    public function reject($id)
+    {
+        $user = User::findOrFail($id);
+        $user->status = 'rejected';
+        $user->save();
+
+        return redirect()->route('halaman.headadmin')->with('success', 'User rejected');
+    }
+
 }
