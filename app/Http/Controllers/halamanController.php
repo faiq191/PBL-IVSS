@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\postRequest;
+use App\Models\User;
 
 class halamanController extends Controller
 {
@@ -59,8 +60,12 @@ public function research()
 
     public function students()
     {
-        return view('students');
+        $students = User::where('role', 'member')
+                        ->where('status', 'approved')
+                        ->get();
+        return view('students', compact('students'));
     }
+
 
     /*** Menampilkan halaman news & contact ***/
     public function news()
@@ -71,6 +76,47 @@ public function research()
 
 
     }
+
+    //Berita, Research dan Dokumentasi dapat di Kliks
+        public function showNews($id)
+    {
+        $item = \App\Models\News::findOrFail($id);
+        return view('detail', ['item' => $item, 'type' => 'News']);
+    }
+
+    public function showResearch($id)
+    {
+        $item = \App\Models\Research::findOrFail($id);
+        return view('detail', ['item' => $item, 'type' => 'Research']);
+    }
+
+    public function showDocuments($id)
+    {
+        $item = \App\Models\Documents::findOrFail($id);
+        return view('detail', ['item' => $item, 'type' => 'Documentation']);
+    }
+
+    // NEWS DETAIL
+    public function newsDetail($id)
+    {
+        $item = \App\Models\News::findOrFail($id);
+        return view('detail', compact('item'));
+    }
+
+    // RESEARCH DETAIL
+    public function researchDetail($id)
+    {
+        $item = \App\Models\Research::findOrFail($id);
+        return view('detail', compact('item'));
+    }
+
+    // DOCUMENT DETAIL
+    public function documentDetail($id)
+    {
+        $item = \App\Models\Documents::findOrFail($id);
+        return view('detail', compact('item'));
+    }
+
 
 
 
@@ -89,64 +135,70 @@ public function admin(Request $request)
 
     // NEWS
     $news = \App\Models\News::query();
-
     if ($search) {
-        $news->where(function($q) use ($search) {
-            $q->where('title', 'like', "%$search%")
-              ->orWhere('description', 'like', "%$search%");
-        });
+        $news->where('title', 'like', "%$search%")
+            ->orWhere('description', 'like', "%$search%");
     }
-
-    if ($category === 'Berita') {
-        // news only
-        $news->whereNotNull('id');
-    }
-
     if ($year) {
         $news->whereYear('date', $year);
     }
 
-    $news = $news->orderBy('date', 'desc')->get();
+    // jika kategori Berita → tampilkan news
+    if ($category === 'Berita') {
+        $news = $news->orderBy('date', 'desc')->get();
+    }
+    // jika kategori lain → kosongkan
+    elseif ($category !== '' && $category !== null) {
+        $news = collect();
+    }
+    // jika kategori tidak dipilih → tampilkan semua
+    else {
+        $news = $news->orderBy('date', 'desc')->get();
+    }
+
+
 
     // RESEARCH
     $research = \App\Models\Research::query();
-
     if ($search) {
-        $research->where(function($q) use ($search) {
-            $q->where('title', 'like', "%$search%")
-              ->orWhere('description', 'like', "%$search%");
-        });
+        $research->where('title', 'like', "%$search%")
+                ->orWhere('description', 'like', "%$search%");
     }
-
-    if ($category === 'Research') {
-        $research->whereNotNull('id');
-    }
-
     if ($year) {
         $research->whereYear('date', $year);
     }
 
-    $research = $research->orderBy('date', 'desc')->get();
+    if ($category === 'Research') {
+        $research = $research->orderBy('date', 'desc')->get();
+    }
+    elseif ($category !== '' && $category !== null) {
+        $research = collect();
+    }
+    else {
+        $research = $research->orderBy('date', 'desc')->get();
+    }
+
+
 
     // DOCUMENTS
     $documents = \App\Models\Documents::query();
-
     if ($search) {
-        $documents->where(function($q) use ($search) {
-            $q->where('title', 'like', "%$search%")
-              ->orWhere('description', 'like', "%$search%");
-        });
+        $documents->where('title', 'like', "%$search%")
+                ->orWhere('description', 'like', "%$search%");
     }
-
-    if ($category === 'Dokumentasi') {
-        $documents->whereNotNull('id');
-    }
-
     if ($year) {
         $documents->whereYear('date', $year);
     }
 
-    $documents = $documents->orderBy('date', 'desc')->get();
+    if ($category === 'Dokumentasi') {
+        $documents = $documents->orderBy('date', 'desc')->get();
+    }
+    elseif ($category !== '' && $category !== null) {
+        $documents = collect();
+    }
+    else {
+        $documents = $documents->orderBy('date', 'desc')->get();
+    }
 
 
     return view('admin', compact('news', 'research', 'documents'));

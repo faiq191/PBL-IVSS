@@ -6,9 +6,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>About</title>
   <link href="{{ asset('assets/output.css') }}" rel="stylesheet">
-
-
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+           <script src="https://cdn.tailwindcss.com"></script>
  </head>
 
  <body>
@@ -183,7 +182,7 @@
 
          <!-- ITEM 7 -->
          <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
-           <img src="{{ asset('assets/img/intel.png') }}" class="mx-auto w-14 mb-3" alt="">
+           <img src="{{ asset('assets/img/intelv3.png') }}" class="mx-auto w-14 mb-3" alt="">
            <h3 class="font-bold text-lg">Intel RealSense D415</h3>
            <p class="text-sm text-gray-600 mt-2">
              Kamera kedalaman (3D) dan visual, vital untuk riset Computer Vision dan Sistem Cerdas.
@@ -228,6 +227,7 @@
 
        </div>
      </section>
+<x-footer />
 
 
      <!-- SCRIPT -->

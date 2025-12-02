@@ -1,16 +1,13 @@
- <!doctype html>
- <html>
-
- <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Documentation</title>
-  <link href="{{ asset('assets/output.css') }}" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-           <script src="https://cdn.tailwindcss.com"></script>
- </head>
-
- <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <link href="{{ asset('assets/output.css') }}" rel="stylesheet">
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <title>{{ $item->title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
   <div class="w-full">
     <!--  NAVBAR -->
     <nav class="sticky top-0 z-50 bg-white shadow-sm">
@@ -70,35 +67,35 @@
         <div class="hidden lg:flex items-center gap-3">
           <input type="text" placeholder="Cari berita..."
             class="border border-slate-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
-                    @auth
-            {{-- Jika user sudah login --}}
+            @auth
+                {{-- Jika user sudah login --}}
 
-            @if (Auth::user()->role === 'admin')
-                <a href="{{ route('halaman.admin') }}" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
-                    Admin Panel
-                </a>
+                @if (Auth::user()->role === 'admin')
+                    <a href="{{ route('halaman.admin') }}" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
+                        Admin Panel
+                    </a>
+                @else
+                    <span class="text-primary font-semibold">
+                        {{ Auth::user()->username }}
+                    </span>
+                @endif
+
+                <form action="{{ route('logout') }}" method="POST" class="inline">
+                    @csrf
+                    <button type="submit" class="bg-red-500 px-6 py-2 rounded-full text-white font-semibold ml-4">
+                        Logout
+                    </button>
+                </form>
             @else
-                <span class="text-primary font-semibold">
-                    {{ Auth::user()->username }}
-                </span>
-            @endif
+                {{-- Jika user BELUM login --}}
+                <a href="{{ route('login') }}" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
+                    Masuk
+                </a>
 
-            <form action="{{ route('logout') }}" method="POST" class="inline">
-                @csrf
-                <button type="submit" class="bg-red-500 px-6 py-2 rounded-full text-white font-semibold ml-4">
-                    Logout
-                </button>
-            </form>
-        @else
-            {{-- Jika user BELUM login --}}
-            <a href="{{ route('login') }}" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
-                Masuk
-            </a>
-
-            <a href="{{ route('register') }}" class="bg-gray-300 px-8 py-2 rounded-full text-black font-semibold ml-2">
-                Daftar
-            </a>
-        @endauth
+                <a href="{{ route('register') }}" class="bg-gray-300 px-8 py-2 rounded-full text-black font-semibold ml-2">
+                    Daftar
+                </a>
+            @endauth
         </div>
 
       </div>
@@ -118,34 +115,25 @@
       </div>
   </div>
 </div>
- <!-- DYNAMIC RESEARCH UNGGULAN -->
-    <section class="container mx-auto px-4 lg:px-14 mt-10">
 
-        <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
-            <div class="font-bold text-2xl text-center md:text-left">
-                <p>Labs Documentation</p>
-            </div>
-        </div>
- <!-- DYNAMIC DOCUMENTS SECTION -->
-<div class="h-96 overflow-y-auto pr-3 space-y-5">
+    <div class="h-16"></div>
+<div style="max-width:800px; margin:auto; padding:40px">
 
-    @foreach ($documents as $item)
-        <a href="{{ route('documents.detail', $item->id) }}" class="block">
-            <div class="border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300">
+    @if($item->image)
+        <img src="{{ asset('storage/'.$item->image) }}" style="width:100%; border-radius:10px;">
+    @endif
 
-                <p class="font-bold text-base mb-1">{{ $item->title }}</p>
-                <p class="text-slate-400 text-sm">{{ $item->date }}</p>
-                <p class="text-slate-500 text-sm mt-1 line-clamp-3">
-                </p>
+    <h1>{{ $item->title }}</h1>
+    <p><small>{{ $item->date }}</small></p>
 
-            </div>
-        </a>
-    @endforeach
+    <div style="margin-top:20px">
+        {{ $item->description }}
+    </div>
+
+    <br><br>
+    <a href="{{ url()->previous() }}">← Back</a>
 
 </div>
-</section>
-<x-footer />
-
     <!-- SCRIPT -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -153,19 +141,16 @@
         const menu = document.getElementById("menu");
         const dropdownBtns = document.querySelectorAll(".dropdown-btn");
 
-        // Toggle mobile menu
         menuToggle.addEventListener("click", () => {
           menu.classList.toggle("hidden");
         });
 
-        // Dropdown click toggle (desktop + mobile)
         dropdownBtns.forEach(btn => {
           btn.addEventListener("click", (e) => {
             e.stopPropagation();
             const dropdown = btn.nextElementSibling;
             dropdown.classList.toggle("hidden");
 
-            // Close other dropdowns
             dropdownBtns.forEach(otherBtn => {
               if (otherBtn !== btn) {
                 otherBtn.nextElementSibling.classList.add("hidden");
@@ -174,7 +159,6 @@
           });
         });
 
-        // Close dropdowns when clicking outside
         document.addEventListener("click", (e) => {
           if (!e.target.closest(".relative") && !e.target.closest(".dropdown-btn")) {
             document.querySelectorAll(".dropdown-menu").forEach(menu => {
@@ -187,6 +171,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/src/js/swiper.js"></script>
-</body>
 
+</body>
 </html>

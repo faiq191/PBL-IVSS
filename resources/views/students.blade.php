@@ -6,8 +6,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Students</title>
    <link href="{{ ('assets/output.css') }}" rel="stylesheet">
-
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+           <script src="https://cdn.tailwindcss.com"></script>
  </head>
 
  <body>
@@ -119,47 +119,26 @@
   </div>
 </div>
 
-     <!-- CONTENT -->
-     <div class="container mx-auto px-4 lg:px-14 py-12">
-       <h1 class="text-3xl font-bold text-center mb-10">
-         Lab Members <span class="text-gray-500 text-lg">(Mahasiswa)</span>
-       </h1>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 justify-items-center">
 
-       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 justify-items-center">
-         <!-- Test 1 -->
-         <div class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center w-40 hover:shadow-lg transition">
-           <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Test" class="w-28 h-28 mx-auto rounded-full object-cover">
-           <p class="text-sm font-bold mt-2">Test 1</p>
-           <p class="text-xs text-gray-500 mt-1">Jurusan</p>
-         </div>
+@foreach($students as $student)
+<div class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center w-40 hover:shadow-lg transition">
 
-         <!-- Test 2 -->
-         <div class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center w-40 hover:shadow-lg transition">
-           <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Test" class="w-28 h-28 mx-auto rounded-full object-cover">
-           <p class="text-sm font-bold mt-2">Test 2</p>
-           <p class="text-xs text-gray-500 mt-1">Jurusan</p>
-         </div>
+    <img
+        src="{{ $student->image ? asset('storage/' . $student->image) : asset('assets/img/logo.png') }}"
+        class="w-28 h-28 mx-auto rounded-full object-cover">
 
-         <!-- Test 3 -->
-         <div class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center w-40 hover:shadow-lg transition">
-           <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Test" class="w-28 h-28 mx-auto rounded-full object-cover">
-           <p class="text-sm font-bold mt-2">Test 3</p>
-           <p class="text-xs text-gray-500 mt-1">Jurusan</p>
-         </div>
+    <p class="text-sm font-bold mt-2">{{ $student->username }}</p>
+    <p class="text-xs text-gray-500 mt-1">{{ $student->role }}</p>
 
-         <!-- Test 4 -->
-         <div class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center w-40 hover:shadow-lg transition">
-           <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Test" class="w-28 h-28 mx-auto rounded-full object-cover">
-           <p class="text-sm font-bold mt-2">Test 4</p>
-           <p class="text-xs text-gray-500 mt-1">Jurusan</p>
-         </div>
+</div>
+@endforeach
 
-         <!-- Test 5 -->
-         <div class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center w-40 hover:shadow-lg transition">
-           <img src="{{ asset('assets/img/ROBOT.jpg') }}" alt="Test" class="w-28 h-28 mx-auto rounded-full object-cover">
-           <p class="text-sm font-bold mt-2">Test 5</p>
-           <p class="text-xs text-gray-500 mt-1">Jurusan</p>
-         </div>
+</div>
+
+</div>
+
+<x-footer />
 
          <!-- SCRIPT -->
          <script>

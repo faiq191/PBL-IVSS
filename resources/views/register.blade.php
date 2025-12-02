@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link href="{{ ('assets/output.css') }}" rel="stylesheet">
-
+            <script src="https://cdn.tailwindcss.com"></script>
     <!-- HILANGKAN ERROR GLOBAL DI ATAS -->
     <style>
         .bg-red-100.text-red-700.text-sm.rounded-lg {

@@ -6,9 +6,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>News</title>
   <link href="{{ asset('assets/output.css') }}" rel="stylesheet">
-
-
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+           <script src="https://cdn.tailwindcss.com"></script>
  </head>
 
  <body>
@@ -143,28 +142,24 @@
         </div>
 
       <!-- DYNAMIC NEWS SECTION -->
-    <div class="h-96 overflow-y-auto pr-3 space-y-5">
+<div class="h-96 overflow-y-auto pr-3 space-y-5">
 
-        @foreach ($news as $item)
-        <div class="border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300">
+    @foreach ($news as $item)
+        <a href="{{ route('news.detail', $item->id) }}" class="block">
+            <div class="border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300">
 
-            <img src="{{ asset('storage/' . $item->image) }}"
-                class="w-full h-28 object-cover rounded-lg mb-3">
+                <p class="font-bold text-base mb-1">{{ $item->title }}</p>
+                <p class="text-slate-400 text-sm">{{ $item->date }}</p>
+                <p class="text-slate-500 text-sm mt-1 line-clamp-3">
+                </p>
 
-            <p class="font-bold text-base mb-1">{{ $item->title }}</p>
+            </div>
+        </a>
+    @endforeach
 
-            <p class="text-slate-400 text-sm">{{ $item->date }}</p>
-
-            <p class="text-slate-500 text-sm mt-1 line-clamp-3">
-                {{ $item->description }}
-            </p>
-
-        </div>
-        @endforeach
-
-    </div>
-
+</div>
 </section>
+<x-footer />
 
     <!-- SCRIPT -->
     <script>

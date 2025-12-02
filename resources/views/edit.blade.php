@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edits</title>
     <link href="{{ asset('assets/output.css') }}" rel="stylesheet">
-
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+               <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>

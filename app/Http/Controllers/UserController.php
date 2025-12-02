@@ -22,16 +22,24 @@ class UserController extends Controller
 
     public function doRegister(Request $request)
     {
-        $request->validate([
-            'username' => 'required|unique:users',
-            'password' => 'required|min:4|confirmed', // INI PENTING
-        ]);
+    $request->validate([
+        'username' => 'required|unique:users',
+        'password' => 'required|min:6',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
+    ]);
 
-        User::create([
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'role'     => 'member'
-        ]);
+    $imagePath = null;
+
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('users', 'public');
+    }
+
+    User::create([
+        'username' => $request->username,
+        'password' => bcrypt($request->password),
+        'role' => 'member',
+        'image' => $imagePath
+    ]);
 
         return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
     }

@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lecturers</title>
   <link href="{{ ('assets/output.css') }}" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+          <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -119,8 +119,6 @@
   </div>
 </div>
 
-    <div class="h-16"></div>
-
     <!-- CONTENT -->
 <div class="container mx-auto px-4 lg:px-20 py-16">
 
@@ -209,6 +207,7 @@
 
 </div>
 
+<x-footer />
 
     <!-- SCRIPT -->
     <script>

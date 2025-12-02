@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create</title>
     <link href="{{('assets/output.css') }}" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+               <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -111,7 +111,7 @@
         class="block w-full px-3 py-2 border border-gray-300 rounded-md">
 
     <!-- TYPE HERE -->
-    <label class="block text-sm font-medium text-gray-700 mt-4">Type</label>
+    <label class="block text-sm font-medium text-gray-700 mt-4">Description</label>
     <input type="text" name="type"
         class="block w-full px-3 py-2 border border-gray-300 rounded-md"
         placeholder="">

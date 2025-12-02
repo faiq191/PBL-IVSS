@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
     <link href="{{ ('assets/output.css') }}" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -28,9 +28,6 @@
                 <!-- Menu -->
                 <ul id="menu" class="hidden lg:flex items-center gap-10 font-medium text-base">
                     <li><a href="{{route('halaman.admin') }}" class="text-primary hover:text-gray-600">Beranda</a></li>
-                    <li><a href="{{route('halaman.create') }}" class="hover:text-primary">Buat Berita</a></li>
-
-
                     <li><a href="{{route('halaman.news') }}" class="hover:text-primary">News</a></li>
                     <li><a href="{{route('halaman.research') }}" class="hover:text-primary">Research</a></li>
                     <li><a href="{{route('halaman.documents') }}" class="hover:text-primary">Dokumentasi</a></li>
@@ -70,19 +67,6 @@
                         </a>
                     @endauth
                         @auth
-                    <div class="flex items-center gap-4">
-                        <span class="font-semibold text-gray-700">
-                            {{ Auth::user()->username }}
-                        </span>
-
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit"
-                                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full">
-                                Logout
-                            </button>
-                        </form>
-                    </div>
                     @endauth
 
                 </div>
@@ -137,16 +121,21 @@
 
 </form>
 
-
     <!-- BERITA -->
-    <section class="container mx-auto px-4 lg:px-14 mt-10">
-
-      <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
+@if(request('category') == '' || request('category') == 'Berita')
+<section class="container mx-auto px-4 lg:px-14 mt-10">
+    <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
         <div class="font-bold text-2xl text-center md:text-left">
-          <p>Labs News</p>
-        </div>
-        </a>
-      </div>
+            <p>Labs News</p>
+
+
+    <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
+        @foreach ($news as $item)
+            {{-- your news card --}}
+        @endforeach
+    </div>
+</section>
+@endif
 
 <!-- DYNAMIC NEWS SECTION -->
 <div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
@@ -196,12 +185,9 @@
 
 </div>
 
-
     </a>
 
-
     </section>
-
 
    <!-- RESEARCH -->
     <section class="container mx-auto px-4 lg:px-14 mt-10">
@@ -320,7 +306,6 @@
 
 </div>
 
-
 </a>
 
     </section>
@@ -333,7 +318,7 @@
         <a href="{{route('halaman.create')}}" class="bg-primary px-4 py-2 rounded-full text-white font-semibold">Buat Berita</a>
     </div>
 
-
+<x-footer />
 
     <!-- SCRIPT -->
     <script>

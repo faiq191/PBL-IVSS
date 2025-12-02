@@ -6,9 +6,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Home</title>
   <link href="{{ asset('assets/output.css') }}" rel="stylesheet">
-
-
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
  </head>
 
  <body>
@@ -71,36 +70,37 @@
         <div class="hidden lg:flex items-center gap-3">
           <input type="text" placeholder="Cari berita..."
             class="border border-slate-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
-                    @auth
-            {{-- Jika user sudah login --}}
+            @auth
+                {{-- Jika user sudah login --}}
 
-            @if (Auth::user()->role === 'admin')
-                <a href="{{ route('halaman.admin') }}" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
-                    Admin Panel
-                </a>
+                @if (Auth::user()->role === 'admin')
+                    <a href="{{ route('halaman.admin') }}" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
+                        Admin Panel
+                    </a>
+                @else
+                    <span class="text-primary font-semibold">
+                        {{ Auth::user()->username }}
+                    </span>
+                @endif
+
+                <form action="{{ route('logout') }}" method="POST" class="inline">
+                    @csrf
+                    <button type="submit" class="bg-red-500 px-6 py-2 rounded-full text-white font-semibold ml-4">
+                        Logout
+                    </button>
+                </form>
             @else
-                <span class="text-primary font-semibold">
-                    {{ Auth::user()->username }}
-                </span>
-            @endif
+                {{-- Jika user BELUM login --}}
+                <a href="{{ route('login') }}" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
+                    Masuk
+                </a>
 
-            <form action="{{ route('logout') }}" method="POST" class="inline">
-                @csrf
-                <button type="submit" class="bg-red-500 px-6 py-2 rounded-full text-white font-semibold ml-4">
-                    Logout
-                </button>
-            </form>
-        @else
-            {{-- Jika user BELUM login --}}
-            <a href="{{ route('login') }}" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
-                Masuk
-            </a>
-
-            <a href="{{ route('register') }}" class="bg-gray-300 px-8 py-2 rounded-full text-black font-semibold ml-2">
-                Daftar
-            </a>
-        @endauth
+                <a href="{{ route('register') }}" class="bg-gray-300 px-8 py-2 rounded-full text-black font-semibold ml-2">
+                    Daftar
+                </a>
+            @endauth
         </div>
+
 
       </div>
     </nav>
@@ -119,9 +119,6 @@
       </div>
   </div>
 </div>
-
-    <div class="h-16"></div>
-
 
     <!-- LAB PROFILE SECTION -->
 
@@ -149,24 +146,22 @@
           Lihat Semua
         </a>
       </div>
-    <div class="h-96 overflow-y-auto pr-3 space-y-5">
+<div class="h-96 overflow-y-auto pr-3 space-y-5">
 
-        @foreach ($news as $item)
-        <div class="border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300">
+    @foreach ($news as $item)
+        <a href="{{ route('news.detail', $item->id) }}" class="block">
+            <div class="border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300">
 
+                <p class="font-bold text-base mb-1">{{ $item->title }}</p>
+                <p class="text-slate-400 text-sm">{{ $item->date }}</p>
+                <p class="text-slate-500 text-sm mt-1 line-clamp-3">
+                </p>
 
-            <p class="font-bold text-base mb-1">{{ $item->title }}</p>
+            </div>
+        </a>
+    @endforeach
 
-            <p class="text-slate-400 text-sm">{{ $item->date }}</p>
-
-            <p class="text-slate-500 text-sm mt-1 line-clamp-3">
-                {{ $item->description }}
-            </p>
-
-        </div>
-        @endforeach
-
-    </div>
+</div>
 
 </section>
 
@@ -181,25 +176,25 @@
           Lihat Semua
         </a>
       </div>
-    <div class="h-96 overflow-y-auto pr-3 space-y-5">
+<div class="h-96 overflow-y-auto pr-3 space-y-5">
 
-        @foreach ($research as $item)
-        <div class="border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300">
+    @foreach ($research as $item)
+        <a href="{{ route('research.detail', $item->id) }}" class="block">
+            <div class="border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300">
 
+                <p class="font-bold text-base mb-1">{{ $item->title }}</p>
+                <p class="text-slate-400 text-sm">{{ $item->date }}</p>
+                <p class="text-slate-500 text-sm mt-1 line-clamp-3">
+                </p>
 
-            <p class="font-bold text-base mb-1">{{ $item->title }}</p>
+            </div>
+        </a>
+    @endforeach
 
-            <p class="text-slate-400 text-sm">{{ $item->date }}</p>
+</div>
 
-            <p class="text-slate-500 text-sm mt-1 line-clamp-3">
-                {{ $item->description }}
-            </p>
-
-        </div>
-        @endforeach
-
-    </div>
 </section>
+<x-footer />
 
     <!-- SCRIPT -->
     <script>

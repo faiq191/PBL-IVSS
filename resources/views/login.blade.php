@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="{{ ('assets/output.css') }}" rel="stylesheet">
+            <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="flex items-center justify-center min-h-screen bg-[#FFF8F2]">

@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
     <link href="{{ ('assets/output.css') }}" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -70,21 +70,6 @@
                             Daftar
                         </a>
                     @endauth
-                        @auth
-                    <div class="flex items-center gap-4">
-                        <span class="font-semibold text-gray-700">
-                            {{ Auth::user()->username }}
-                        </span>
-
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit"
-                                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full">
-                                Logout
-                            </button>
-                        </form>
-                    </div>
-                    @endauth
 
                 </div>
 
@@ -98,14 +83,13 @@
         <h2 class="text-2xl font-bold mb-4 text-center">Pending Members</h2>
         <div>
     <div class="w-full flex justify-center mt-10">
-        <table class="min-w-[400px] border border-gray-300 rounded-lg shadow">
+        <table class="min-w-border border-gray-300 rounded-lg shadow">
             <thead class="bg-gray-100"></thead>
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow">
                 <thead>
                     <tr class="bg-gray-100">
                         <th class="px-4 py-3 border-b">Username</th>
-                        <th class="px-4 py-3 border-b">Role</th>
                         <th class="px-4 py-3 border-b text-center">Approve</th>
                         <th class="px-4 py-3 border-b text-center">Reject</th>
                     </tr>
@@ -115,7 +99,6 @@
                     @foreach($pendingUsers as $user)
                         <tr class="border-b hover:bg-gray-50">
                             <td class="px-4 py-3">{{ $user->username }}</td>
-                            <td class="px-4 py-3">{{ $user->role }}</td>
 
                             <td class="px-4 py-3 text-center">
                                 <form action="{{ route('user.approve', $user->id) }}" method="POST">
@@ -142,7 +125,6 @@
 
     </div>
 </div>
-
 
 <div class="w-full flex justify-center mt-10">
     <div class="w-full max-w-3xl">
@@ -208,12 +190,9 @@
 
 </div>
 
-
     </a>
 
-
     </section>
-
 
    <!-- RESEARCH -->
     <section class="container mx-auto px-4 lg:px-14 mt-10">
@@ -270,7 +249,6 @@
     @endforeach
 
 </div>
-
 
 </a>
 
@@ -332,7 +310,6 @@
 
 </div>
 
-
 </a>
 
     </section>
@@ -345,7 +322,7 @@
         <a href="{{route('halaman.create')}}" class="bg-primary px-4 py-2 rounded-full text-white font-semibold">Buat Berita</a>
     </div>
 
-
+<x-footer />
 
     <!-- SCRIPT -->
     <script>

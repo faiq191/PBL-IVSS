@@ -15,6 +15,18 @@ Route::get('/students', [halamanController::class, 'students'])->name('halaman.s
 Route::get('/news', [halamanController::class, 'news'])->name('halaman.news');
 Route::get('/contacts', [halamanController::class, 'contacts'])->name('halaman.contacts');
 
+// ROUTE UNTUK BERITA, RESEARCH DAN DOKUMENTASI
+
+Route::get('/research/{id}', [halamanController::class, 'researchDetail'])
+    ->name('research.detail');
+
+Route::get('/documents/{id}', [halamanController::class, 'documentDetail'])
+    ->name('documents.detail');
+
+Route::get('/news/{id}', [halamanController::class, 'newsDetail'])
+    ->name('news.detail');
+
+
 //AUTH ROUTES (Login & Register)
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
