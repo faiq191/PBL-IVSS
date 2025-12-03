@@ -117,8 +117,23 @@
         </div>
       </div>
   </div>
+
 </div>
- <!-- DYNAMIC RESEARCH UNGGULAN -->
+
+<style>
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+</style>
+
+<!-- DYNAMIC DOCUMENT -->
     <section class="container mx-auto px-4 lg:px-14 mt-10">
 
         <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
@@ -126,6 +141,7 @@
                 <p>Labs Documentation</p>
             </div>
         </div>
+
  <!-- DYNAMIC DOCUMENTS SECTION -->
 <div class="h-96 overflow-y-auto pr-3 space-y-5">
 

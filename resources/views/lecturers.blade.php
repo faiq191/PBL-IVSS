@@ -17,10 +17,10 @@
       <div class="container mx-auto flex justify-between items-center py-5 px-4 lg:px-14">
 
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-2" onclick="return false;">
-          <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
-          <p class="text-lg lg:text-xl font-bold" href="{{   route('halaman.index') }}">IVSS</p>
-        </a>
+            <a href="{{ route('halaman.index') }}" class="flex items-center gap-2">
+            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
+            <p class="text-lg lg:text-xl font-bold">IVSS</p>
+            </a>
 
         <!-- Mobile menu toggle -->
         <button id="menu-toggle" class="lg:hidden text-primary text-2xl focus:outline-none">☰</button>
@@ -119,21 +119,40 @@
   </div>
 </div>
 
+<style>
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+</style>
+
     <!-- CONTENT -->
 <div class="container mx-auto px-4 lg:px-20 py-16">
 
     <h1 class="text-5xl font-bold text-center mb-16">Lab Members</h1>
+<h2 class="text-2xl font-semibold text-center mb-10">Kepala Lab</h2>
 
-    <h2 class="text-2xl font-semibold text-center mb-10">Kepala Lab</h2>
+<div class="flex justify-center mb-20">
+    <a href="https://scholar.google.co.jp/citations?hl=id&user=Ysdl_MIAAAAJ" target="_blank" class="block">
+        <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+            <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+                <img src="{{ asset('assets/img/Ulla-Delfana-Rosiani.jpg') }}"
+                     class="w-full h-full object-cover">
+            </div>
 
-    <div class="flex justify-center mb-20">
-        <div class="bg-white w-72 rounded-2xl shadow-lg p-8 flex flex-col items-center hover:shadow-xl transition">
-            <img src="{{ asset('assets/img/Ulla-Delfana-Rosiani_197803272003122002.jpg') }}"
-                 class="w-40 h-40 rounded-full object-cover mb-5">
-            <p class="font-bold text-center text-lg">Dr. Ulla Delfana Rosiani, ST., MT.</p>
-            <p class="text-gray-500 text-sm mt-1">Kepala Lab</p>
+            <h2 class="font-semibold text-base">Dr. Ulla Delfana Rosiani, ST., MT.</h2>
+            <p class="text-sm text-gray-500 mt-1">Kepala Lab</p>
+
+            <p class="text-xs text-blue-600 mt-2">View Google Scholar</p>
         </div>
-    </div>
+    </a>
+</div>
 
 <!-- PENELITI SECTION -->
 <h2 class="text-2xl font-bold text-center mb-6">Peneliti</h2>
@@ -141,64 +160,106 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
 
     <!-- Lecturer Card -->
-    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
-        <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
-            <img src="{{ asset('assets/img/Mamluatul-Hani_ah_199002062019032013-scaled.jpg') }}"
-                 class="w-full h-full object-cover">
+<div class="flex justify-center mb-20">
+    <a href="https://scholar.google.co.jp/citations?hl=id&user=z3yHGr0AAAAJ" target="_blank" class="block">
+        <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+            <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+                <img src="{{ asset('assets/img/Mamluatul-Hani_ah.jpg') }}"
+                     class="w-full h-full object-cover">
+            </div>
+
+            <h2 class="font-semibold text-base">Mamluatul Hani’ah, S.Kom., M.Kom.</h2>
+            <p class="text-sm text-gray-500 mt-1">Peniliti</p>
+
+            <p class="text-xs text-blue-600 mt-2">View Google Scholar</p>
         </div>
-        <h2 class="font-semibold text-base">Mamluatul Hani’ah, S.Kom., M.Kom.</h2>
-        <p class="text-sm text-gray-500 mt-1">Peneliti</p>
-    </div>
+    </a>
+</div>
 
     <!-- Lecturer Card -->
-    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
-        <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
-            <img src="{{ asset('assets/img/Mungki-Astiningrum.jpg') }}"
-                 class="w-full h-full object-cover">
+<div class="flex justify-center mb-20">
+    <a href="https://scholar.google.co.jp/citations?hl=id&user=z4yOSgUAAAAJ" target="_blank" class="block">
+        <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+            <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+                <img src="{{ asset('assets/img/Mungki-Astiningrum.jpg') }}"
+                     class="w-full h-full object-cover">
+            </div>
+
+            <h2 class="font-semibold text-base">Mungki Astiningrum, ST., M.Kom.</h2>
+            <p class="text-sm text-gray-500 mt-1">Peniliti</p>
+
+            <p class="text-xs text-blue-600 mt-2">View Google Scholar</p>
         </div>
-        <h2 class="font-semibold text-base">Mungki Astiningrum, ST., M.Kom.</h2>
-        <p class="text-sm text-gray-500 mt-1">Peneliti</p>
-    </div>
+    </a>
+</div>
 
     <!-- Lecturer Card -->
-    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
-        <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
-            <img src="{{ asset('assets/img/Rosa-Andrie-Asmara_2.jpg') }}"
-                 class="w-full h-full object-cover">
+<div class="flex justify-center mb-20">
+    <a href="https://scholar.google.co.jp/citations?hl=id&user=A1592kEAAAAJ" target="_blank" class="block">
+        <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+            <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+                <img src="{{ asset('assets/img/Rosa-Andrie-Asmara_2.jpg') }}"
+                     class="w-full h-full object-cover">
+            </div>
+
+            <h2 class="font-semibold text-base">Prof. Dr. Eng. Rosa Andrie Asmara, ST., MT.</h2>
+            <p class="text-sm text-gray-500 mt-1">Peniliti</p>
+
+            <p class="text-xs text-blue-600 mt-2">View Google Scholar</p>
         </div>
-        <h2 class="font-semibold text-base">Prof. Dr. Eng. Rosa Andrie Asmara, ST., MT.</h2>
-        <p class="text-sm text-gray-500 mt-1">Peneliti</p>
-    </div>
+    </a>
+</div>
 
     <!-- Lecturer Card -->
-    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
-        <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
-            <img src="{{ asset('assets/img/Vivi-Nur-Wijayaningrum_199308112019032025-scaled.jpg') }}"
-                 class="w-full h-full object-cover">
+<div class="flex justify-center mb-20">
+    <a href="https://scholar.google.co.jp/citations?hl=id&user=g-DSiNsAAAAJ" target="_blank" class="block">
+        <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+            <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+                <img src="{{ asset('assets/img/Vivi-Nur-Wijayaningrum.jpg') }}"
+                     class="w-full h-full object-cover">
+            </div>
+
+            <h2 class="font-semibold text-base">Vivi Nur Wijayaningrum, S.Kom., M.Kom.</h2>
+            <p class="text-sm text-gray-500 mt-1">Peniliti</p>
+
+            <p class="text-xs text-blue-600 mt-2">View Google Scholar</p>
         </div>
-        <h2 class="font-semibold text-base">Vivi Nur Wijayaningrum, S.Kom., M.Kom.</h2>
-        <p class="text-sm text-gray-500 mt-1">Peneliti</p>
-    </div>
+    </a>
+</div>
 
     <!-- Lecturer Card -->
-    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
-        <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
-            <img src="{{ asset('assets/img/Wilda-Imama-Sabilla.jpg') }}"
-                 class="w-full h-full object-cover">
+<div class="flex justify-center mb-20">
+    <a href="https://scholar.google.co.jp/citations?hl=id&user=W4xRFkQAAAAJ" target="_blank" class="block">
+        <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+            <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+                <img src="{{ asset('assets/img/Wilda-Imama-Sabilla.jpg') }}"
+                     class="w-full h-full object-cover">
+            </div>
+
+            <h2 class="font-semibold text-base">Wilda Imama Sabilla, S.Kom., M.Kom.</h2>
+            <p class="text-sm text-gray-500 mt-1">Peniliti</p>
+
+            <p class="text-xs text-blue-600 mt-2">View Google Scholar</p>
         </div>
-        <h2 class="font-semibold text-base">Wilda Imama Sabilla, S.Kom., M.Kom.</h2>
-        <p class="text-sm text-gray-500 mt-1">Peneliti</p>
-    </div>
+    </a>
+</div>
 
     <!-- Lecturer Card -->
-    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
-        <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
-            <img src="{{ asset('assets/img/Ely-Setyo-Astuti.jpg') }}"
-                 class="w-full h-full object-cover">
+<div class="flex justify-center mb-20">
+    <a href="https://scholar.google.co.jp/citations?hl=id&user=Hs9bkN0AAAAJ" target="_blank" class="block">
+        <div class="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+            <div class="w-36 h-36 rounded-full overflow-hidden mb-4">
+                <img src="{{ asset('assets/img/Ely-Setyo-Astuti.jpg') }}"
+                     class="w-full h-full object-cover">
+            </div>
+
+            <h2 class="font-semibold text-base">Dr. Ely Setyo Astuti, ST., MT.</h2>
+            <p class="text-sm text-gray-500 mt-1">Peniliti</p>
+
+            <p class="text-xs text-blue-600 mt-2">View Google Scholar</p>
         </div>
-        <h2 class="font-semibold text-base">Dr. Ely Setyo Astuti, ST., MT.</h2>
-        <p class="text-sm text-gray-500 mt-1">Peneliti</p>
-    </div>
+    </a>
+</div>
 
 </div>
 

@@ -17,21 +17,52 @@
             <div class="container mx-auto flex justify-between items-center py-5 px-4 lg:px-14">
 
                 <!-- Logo -->
-                <a href="{{ route('halaman.index') }}" class="flex items-center gap-2" onclick="return false;">
+                    <a href="{{ route('halaman.index') }}" class="flex items-center gap-2">
                     <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
-                    <p class="text-lg lg:text-xl font-bold" href="{{   route('halaman.index') }}">IVSS</p>
-                </a>
+                    <p class="text-lg lg:text-xl font-bold">IVSS</p>
+                    </a>
 
                 <!-- Mobile menu toggle -->
                 <button id="menu-toggle" class="lg:hidden text-primary text-2xl focus:outline-none">☰</button>
 
-                <!-- Menu -->
-                <ul id="menu" class="hidden lg:flex items-center gap-10 font-medium text-base">
-                    <li><a href="{{route('halaman.admin') }}" class="text-primary hover:text-gray-600">Beranda</a></li>
-                    <li><a href="{{route('halaman.news') }}" class="hover:text-primary">News</a></li>
-                    <li><a href="{{route('halaman.research') }}" class="hover:text-primary">Research</a></li>
-                    <li><a href="{{route('halaman.documents') }}" class="hover:text-primary">Dokumentasi</a></li>
-                </ul>
+              <!-- Menu -->
+            <ul id="menu" class="hidden lg:flex items-center gap-10 font-medium text-base">
+
+                @auth
+                    @if(auth()->user()->role === 'admin_kepala')
+                            <li>
+                                <a
+                                    href="{{ route('halaman.headadmin') }}"
+                                    class="text-primary hover:text-gray-600 font-semibold"
+                                >
+                                    Beranda
+                                </a>
+                            </li>
+                        @endif
+                    @endauth
+
+                    {{-- MENU UTAMA (Lab Activity untuk kepala admin, Beranda untuk admin berita) --}}
+                    <li>
+                        <a
+                            href="{{ route('halaman.admin') }}"
+                            class="{{ auth()->user()->role === 'admin_kepala' ? 'text-black hover:text-gray-600' : 'text-primary hover:text-gray-600' }}"
+                        >
+                            {{ auth()->user()->role === 'admin_kepala' ? 'Lab Activity' : 'Beranda' }}
+                        </a>
+                    </li>
+                    @auth
+                    @if(auth()->user()->role === 'admin_kepala')
+                        <li>
+                            <a href="{{ route('halaman.students') }}" class="hover:text-primary">
+                                Member
+                            </a>
+                        </li>
+                    @endif
+                    @endauth
+                                    <li><a href="{{route('halaman.news') }}" class="hover:text-primary">News</a></li>
+                <li><a href="{{route('halaman.research') }}" class="hover:text-primary">Research</a></li>
+                <li><a href="{{route('halaman.documents') }}" class="hover:text-primary">Dokumentasi</a></li>
+            </ul>
 
                 <!-- Search + Login -->
                 <div class="hidden lg:flex items-center gap-3">
@@ -120,6 +151,19 @@
     </div>
 
 </form>
+
+<style>
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+</style>
 
     <!-- BERITA -->
 @if(request('category') == '' || request('category') == 'Berita')

@@ -17,10 +17,10 @@
       <div class="container mx-auto flex justify-between items-center py-5 px-4 lg:px-14">
 
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-2" onclick="return false;">
-          <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
-          <p class="text-lg lg:text-xl font-bold" href="{{   route('halaman.index') }}">IVSS</p>
-        </a>
+            <a href="{{ route('halaman.index') }}" class="flex items-center gap-2">
+            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
+            <p class="text-lg lg:text-xl font-bold">IVSS</p>
+            </a>
 
         <!-- Mobile menu toggle -->
         <button id="menu-toggle" class="lg:hidden text-primary text-2xl focus:outline-none">☰</button>
@@ -119,6 +119,18 @@
   </div>
 </div>
 
+<style>
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+</style>
  <!-- DYNAMIC RESEARCH UNGGULAN -->
     <section class="container mx-auto px-4 lg:px-14 mt-10">
 

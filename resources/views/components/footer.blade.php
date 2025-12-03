@@ -32,6 +32,7 @@
             <ul class="space-y-2 text-gray-300 text-sm">
                 <li>📍 Polinema, Malang</li>
                 <li>✉️ visicerdas@polinema.ac.id</li>
+                <li>🏢 Gedung Teknologi Informasi, Politeknik Negeri Malang</li>
             </ul>
         </div>
 

@@ -328,6 +328,19 @@ public function update(Request $request, $id, $type)
         $year       = $request->year;
         $pendingUsers = \App\Models\User::where('status', 'pending')->get();
 
+    $memberCount = User::where('role', 'member')
+                        ->where('status', 'approved')
+                        ->count();
+    $adminBeritaCount = User::where('role', 'admin_berita')
+                            ->where('status', 'approved')
+                            ->count();
+    $adminKepalaCount = User::where('role', 'admin_kepala')
+                            ->where('status', 'approved')
+                            ->count();
+    $members = User::where('role', 'member')
+                ->where('status', 'approved')
+                ->get();
+
         // NEWS
         $news = \App\Models\News::query();
         if ($search) {
@@ -376,6 +389,15 @@ public function update(Request $request, $id, $type)
         }
         $documents = $documents->orderBy('date', 'desc')->get();
 
-        return view('headadmin', compact('news', 'research', 'documents', 'pendingUsers'));
+        return view('headadmin', compact(
+        'news',
+        'research',
+        'documents',
+        'pendingUsers',
+        'memberCount',
+        'adminBeritaCount',
+        'adminKepalaCount',
+        'members'
+    ));
     }
 }

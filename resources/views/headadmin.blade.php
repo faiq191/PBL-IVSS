@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Kepala Admin</title>
     <link href="{{ ('assets/output.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
         <script src="https://cdn.tailwindcss.com"></script>
@@ -17,9 +17,9 @@
             <div class="container mx-auto flex justify-between items-center py-5 px-4 lg:px-14">
 
                 <!-- Logo -->
-                <a href="{{ route('halaman.index') }}" class="flex items-center gap-2" onclick="return false;">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
-                    <p class="text-lg lg:text-xl font-bold" href="{{   route('halaman.index') }}">IVSS</p>
+                <a href="{{ route('halaman.index') }}" class="flex items-center gap-2">
+                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
+                <p class="text-lg lg:text-xl font-bold">IVSS</p>
                 </a>
 
                 <!-- Mobile menu toggle -->
@@ -28,10 +28,8 @@
                 <!-- Menu -->
                 <ul id="menu" class="hidden lg:flex items-center gap-10 font-medium text-base">
                     <li><a href="{{route('halaman.headadmin') }}" class="text-primary hover:text-gray-600">Beranda</a></li>
+                    <li><a href="{{route('halaman.admin') }}" class="hover:text-primary">Labs Activity</a></li>
                     <li><a href="{{route('halaman.students') }}" class="hover:text-primary">Member</a></li>
-                    <li><a href="{{route('halaman.create') }}" class="hover:text-primary">Buat Berita</a></li>
-
-
                     <li><a href="{{route('halaman.news') }}" class="hover:text-primary">News</a></li>
                     <li><a href="{{route('halaman.research') }}" class="hover:text-primary">Research</a></li>
                     <li><a href="{{route('halaman.documents') }}" class="hover:text-primary">Dokumentasi</a></li>
@@ -78,250 +76,115 @@
 
         <div class="h-16"></div>
 
-        <!-- CONTENT -->
-        <div class="container mx-auto px-4 lg:px-20 py-16">
+<style>
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+</style>
+
+    <!-- CONTENT -->
+            <div class="container mx-auto px-4 lg:px-20 py-16">
         <h2 class="text-2xl font-bold mb-4 text-center">Pending Members</h2>
-        <div>
-    <div class="w-full flex justify-center mt-10">
-        <table class="min-w-border border-gray-300 rounded-lg shadow">
-            <thead class="bg-gray-100"></thead>
-        <div class="overflow-x-auto">
-            <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow">
-                <thead>
-                    <tr class="bg-gray-100">
-                        <th class="px-4 py-3 border-b">Username</th>
-                        <th class="px-4 py-3 border-b text-center">Approve</th>
-                        <th class="px-4 py-3 border-b text-center">Reject</th>
+<div class="mt-10 flex justify-center">
+    <div class="w-full max-w-2xl overflow-x-auto">
+        <table class="w-full bg-white border border-gray-200 rounded-xl shadow">
+            <thead>
+                <tr class="bg-gray-100 text-sm">
+                    <th class="px-4 py-3 border-b text-left">Username</th>
+                    <th class="px-4 py-3 border-b text-center">Approve</th>
+                    <th class="px-4 py-3 border-b text-center">Reject</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach($pendingUsers as $user)
+                    <tr class="border-b hover:bg-gray-50 text-sm">
+                        <td class="px-4 py-3">{{ $user->username }}</td>
+
+                        <td class="px-4 py-3 text-center">
+                            <form action="{{ route('user.approve', $user->id) }}" method="POST">
+                                @csrf
+                                <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-xs">
+                                    Approve
+                                </button>
+                            </form>
+                        </td>
+
+                        <td class="px-4 py-3 text-center">
+                            <form action="{{ route('user.reject', $user->id) }}" method="POST">
+                                @csrf
+                                <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs">
+                                    Reject
+                                </button>
+                            </form>
+                        </td>
                     </tr>
-                </thead>
+                @endforeach
+            </tbody>
 
-                <tbody>
-                    @foreach($pendingUsers as $user)
-                        <tr class="border-b hover:bg-gray-50">
-                            <td class="px-4 py-3">{{ $user->username }}</td>
-
-                            <td class="px-4 py-3 text-center">
-                                <form action="{{ route('user.approve', $user->id) }}" method="POST">
-                                    @csrf
-                                    <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded">
-                                        Approve
-                                    </button>
-                                </form>
-                            </td>
-
-                            <td class="px-4 py-3 text-center">
-                                <form action="{{ route('user.reject', $user->id) }}" method="POST">
-                                    @csrf
-                                    <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
-                                        Reject
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-
+        </table>
     </div>
 </div>
 
-<div class="w-full flex justify-center mt-10">
-    <div class="w-full max-w-3xl">
 
-        <h2 class="text-2xl font-bold mb-4 text-center">Labs Activity</h2>
+    <!--List Member-->
+        <div class="container mx-auto px-4 lg:px-20 py-16">
+        <h2 class="text-2xl font-bold mb-4 text-center">Lab Members</h2>
+    <table class="w-1/2 mx-auto text-sm">
+        <thead>
+            <tr class="bg-gray-100">
+                <th class="p-2 border">No</th>
+                <th class="p-2 border">Nama</th>
+                <th class="p-2 border">Tanggal Bergabung</th>
+            </tr>
+        </thead>
 
-
-    <!-- BERITA -->
-    <section class="container mx-auto px-4 lg:px-14 mt-10">
-
-      <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
-        <div class="font-bold text-2xl text-center md:text-left">
-          <p>Labs News</p>
-        </div>
-        </a>
-      </div>
-
-<!-- DYNAMIC NEWS SECTION -->
-<div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
-
-    @foreach ($news as $item)
-    <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-
-        <img src="{{ asset('storage/' . $item->image) }}"
-             class="w-full h-40 object-cover rounded-lg mb-3">
-
-        <p class="font-bold text-base mb-1">
-            {{ $item->title }}
-        </p>
-
-        <p class="text-slate-400 text-sm">
-            {{ $item->date }}
-        </p>
-
-        <p class="text-slate-500 text-sm mt-1 line-clamp-3">
-            {{ $item->description }}
-        </p>
-
-        <!-- EDIT + DELETE BUTTONS -->
-        <div class="flex justify-between mt-3">
-
-            <!-- EDIT -->
-            <a href="{{ route('halaman.edit', ['type' => 'news', 'id' => $item->id]) }}"
-               class="text-blue-600 font-semibold">
-                Edit
-            </a>
-
-            <!-- DELETE -->
-            <form action="{{ route('halaman.delete', ['type' => 'news', 'id' => $item->id]) }}"
-                  method="POST"
-                  onsubmit="return confirm('Delete this item?');">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="text-red-600 font-semibold">
-                    Delete
-                </button>
-            </form>
-
-        </div>
-
-    </div>
-    @endforeach
-
+        <tbody>
+            @foreach ($members as $index => $member)
+            <tr>
+                <td class="p-2 border text-center">{{ $index + 1 }}</td>
+                <td class="p-2 border">{{ $member->username }}</td>
+                <td class="p-2 border text-center">{{ $member->created_at->format('d M Y') }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 
-    </a>
+    <!-- USER STATISTICS -->
+    <div class="max-w-3xl mx-auto bg-white shadow-md rounded-xl p-6 mb-10">
+        <h2 class="text-xl font-bold mb-3">User Statistics</h2>
 
-    </section>
+        <div class="grid grid-cols-3 gap-4">
 
-   <!-- RESEARCH -->
-    <section class="container mx-auto px-4 lg:px-14 mt-10">
+            <!-- TOTAL MEMBER -->
+            <div class="bg-blue-100 text-center p-4 rounded-lg">
+                <p class="text-2xl font-bold">{{ $memberCount }}</p>
+                <p class="text-sm text-gray-600">Total Members</p>
+            </div>
 
-      <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
-        <div class="font-bold text-2xl text-center md:text-left">
-          <p>Labs Research</p>
-        </div>
-        </a>
-      </div>
+            <!-- ADMIN BERITA -->
+            <div class="bg-green-100 text-center p-4 rounded-lg">
+                <p class="text-2xl font-bold">{{ $adminBeritaCount }}</p>
+                <p class="text-sm text-gray-600">Admin Berita</p>
+            </div>
 
-<!-- DYNAMIC RESEARCH SECTION -->
-<div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
-
-    @foreach ($research as $item)
-    <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-
-        <img src="{{ asset('storage/' . $item->image) }}"
-             class="w-full h-40 object-cover rounded-lg mb-3">
-
-        <p class="font-bold text-base mb-1">
-            {{ $item->title }}
-        </p>
-
-        <p class="text-slate-400 text-sm">
-            {{ $item->date }}
-        </p>
-
-        <p class="text-slate-500 text-sm mt-1 line-clamp-3">
-            {{ $item->description }}
-        </p>
-
-        <!-- EDIT & DELETE -->
-        <div class="flex justify-between mt-3">
-
-            <a href="{{ route('halaman.edit', ['type' => 'research', 'id' => $item->id]) }}"
-               class="text-blue-600 font-semibold">
-                Edit
-            </a>
-
-            <form action="{{ route('halaman.delete', ['type' => 'research', 'id' => $item->id]) }}"
-                  method="POST"
-                  onsubmit="return confirm('Delete this item?');">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="text-red-600 font-semibold">
-                    Delete
-                </button>
-            </form>
+            <!-- ADMIN KEPALA -->
+            <div class="bg-yellow-100 text-center p-4 rounded-lg">
+                <p class="text-2xl font-bold">{{ $adminKepalaCount }}</p>
+                <p class="text-sm text-gray-600">Admin Kepala</p>
+            </div>
 
         </div>
-
     </div>
-    @endforeach
-
 </div>
-
-</a>
-
-    </section>
-
-   <!-- DOKUMENTASI -->
-    <section class="container mx-auto px-4 lg:px-14 mt-10">
-
-      <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
-        <div class="font-bold text-2xl text-center md:text-left">
-          <p>Labs Documentation</p>
-        </div>
-        </a>
-      </div>
-
- <!-- DYNAMIC DOKUMENTASI SECTION -->
-<div class="grid sm:grid-cols-1 lg:grid-cols-4 gap-5">
-
-    @foreach ($documents as $item)
-    <div class="relative border border-slate-200 p-3 rounded-xl hover:border-primary transition duration-300 ease-in-out">
-
-        <img src="{{ asset('storage/' . $item->image) }}"
-             class="w-full h-40 object-cover rounded-lg mb-3">
-
-        <p class="font-bold text-base mb-1">
-            {{ $item->title }}
-        </p>
-
-        <p class="text-slate-400 text-sm">
-            {{ $item->date }}
-        </p>
-
-        <p class="text-slate-500 text-sm mt-1 line-clamp-3">
-            {{ $item->description }}
-        </p>
-
-        <!-- EDIT & DELETE -->
-        <div class="flex justify-between mt-3">
-
-            <a href="{{ route('halaman.edit', ['type' => 'documents', 'id' => $item->id]) }}"
-               class="text-blue-600 font-semibold">
-                Edit
-            </a>
-
-            <form action="{{ route('halaman.delete', ['type' => 'documents', 'id' => $item->id]) }}"
-                  method="POST"
-                  onsubmit="return confirm('Delete this item?');">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="text-red-600 font-semibold">
-                    Delete
-                </button>
-            </form>
-
-        </div>
-
-    </div>
-    @endforeach
-
-</div>
-
-</a>
-
-    </section>
-
-</div>
-
-    </li>
-    </div>
-    <div class="flex items-center justify-center mt-4">
-        <a href="{{route('halaman.create')}}" class="bg-primary px-4 py-2 rounded-full text-white font-semibold">Buat Berita</a>
-    </div>
-
 <x-footer />
 
     <!-- SCRIPT -->

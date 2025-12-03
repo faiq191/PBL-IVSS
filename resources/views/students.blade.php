@@ -17,10 +17,10 @@
       <div class="container mx-auto flex justify-between items-center py-5 px-4 lg:px-14">
 
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-2" onclick="return false;">
-          <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
-          <p class="text-lg lg:text-xl font-bold" href="{{   route('halaman.index') }}">IVSS</p>
-        </a>
+            <a href="{{ route('halaman.index') }}" class="flex items-center gap-2">
+            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
+            <p class="text-lg lg:text-xl font-bold">IVSS</p>
+            </a>
 
         <!-- Mobile menu toggle -->
         <button id="menu-toggle" class="lg:hidden text-primary text-2xl focus:outline-none">☰</button>
@@ -119,10 +119,24 @@
   </div>
 </div>
 
-<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 justify-items-center">
+<style>
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+</style>
+<h2 class="text-2xl font-semibold text-center mb-10">Lab Member</h2>
+
+<div class="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 place-items-start">
 
 @foreach($students as $student)
-<div class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center w-40 hover:shadow-lg transition">
+<a class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center w-48 h-56 hover:shadow-lg transition block">
 
     <img
         src="{{ $student->image ? asset('storage/' . $student->image) : asset('assets/img/logo.png') }}"
@@ -131,10 +145,11 @@
     <p class="text-sm font-bold mt-2">{{ $student->username }}</p>
     <p class="text-xs text-gray-500 mt-1">{{ $student->role }}</p>
 
-</div>
+</a>
 @endforeach
 
 </div>
+
 
 </div>
 

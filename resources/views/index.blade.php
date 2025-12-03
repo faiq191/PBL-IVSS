@@ -17,18 +17,34 @@
       <div class="container mx-auto flex justify-between items-center py-5 px-4 lg:px-14">
 
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-2" onclick="return false;">
-          <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
-          <p class="text-lg lg:text-xl font-bold" href="{{   route('halaman.index') }}">IVSS</p>
+        <a href="{{ route('halaman.index') }}" class="flex items-center gap-2">
+        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
+        <p class="text-lg lg:text-xl font-bold">IVSS</p>
         </a>
 
         <!-- Mobile menu toggle -->
-        <button id="menu-toggle" class="lg:hidden text-primary text-2xl focus:outline-none">☰</button>
+            <button id="menu-toggle" class="lg:hidden">
+            ☰
+        </button>
 
         <!-- Menu -->
-        <ul id="menu" class="hidden lg:flex items-center gap-10 font-medium text-base">
-          <li><a href="{{route('halaman.index') }}" class="text-primary hover:text-gray-600">Beranda</a></li>
-          <li><a href="{{route('halaman.about') }}" class="hover:text-primary">About</a></li>
+            <ul id="menu" class="hidden lg:flex items-center gap-10 font-medium text-base list-none">
+
+                @if(auth()->check() && in_array(auth()->user()->role, ['admin_kepala', 'admin_berita']))
+                    <li>
+                        <a href="{{ auth()->user()->role === 'admin_kepala'
+                                    ? route('halaman.headadmin')
+                                    : route('halaman.admin') }}"
+                        class="{{ auth()->user()->role === 'admin_kepala'
+                                    ? 'text-black hover:text-gray-600'
+                                    : 'text-primary hover:text-gray-600' }}">
+                            Dashboard
+                        </a>
+                    </li>
+                @endif
+
+                <li><a href="{{route('halaman.index') }}" class="text-primary hover:text-gray-600">Beranda</a></li>
+                <li><a href="{{route('halaman.about') }}" class="hover:text-primary">About</a></li>
 
           <!-- Research dropdown -->
           <li class="relative">
@@ -65,7 +81,7 @@
           <li><a href="{{route('halaman.news') }}" class="hover:text-primary">News</a></li>
           <li><a href="{{route('halaman.contacts') }}" class="hover:text-primary">Contacts</a></li>
         </ul>
-
+            </ul>
         <!-- Search + Login -->
         <div class="hidden lg:flex items-center gap-3">
           <input type="text" placeholder="Cari berita..."
@@ -120,6 +136,19 @@
   </div>
 </div>
 
+<style>
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+</style>
+
     <!-- LAB PROFILE SECTION -->
 
     <section class="container mx-auto px-4 lg:px-14 mt-20 mb-10">
@@ -132,8 +161,6 @@
         </p>
       </div>
     </section>
-
-
 
     <!-- BERITA UNGGULAN -->
     <section class="container mx-auto px-4 lg:px-14 mt-10">
