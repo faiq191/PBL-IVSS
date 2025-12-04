@@ -17,10 +17,11 @@
             <div class="container mx-auto flex justify-between items-center py-5 px-4 lg:px-14">
 
                 <!-- Logo -->
-                <a href="{{ route('halaman.index') }}" class="flex items-center gap-2">
-                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
-                <p class="text-lg lg:text-xl font-bold">IVSS</p>
-                </a>
+        <a href="{{ route('halaman.index') }}" class="flex items-center gap-2">
+        <img src="{{ asset('assets/img/polinema.png') }}" alt="Logo" class="w-8 lg:w-10">
+        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
+        <p class="text-lg lg:text-xl font-bold">IVSS</p>
+        </a>
 
                 <!-- Mobile menu toggle -->
                 <button id="menu-toggle" class="lg:hidden text-primary text-2xl focus:outline-none">☰</button>
@@ -28,7 +29,7 @@
                 <!-- Menu -->
                 <ul id="menu" class="hidden lg:flex items-center gap-10 font-medium text-base">
                     <li><a href="{{route('halaman.headadmin') }}" class="text-primary hover:text-gray-600">Beranda</a></li>
-                    <li><a href="{{route('halaman.admin') }}" class="hover:text-primary">Labs Activity</a></li>
+                    <li><a href="{{route('halaman.admin') }}" class="hover:text-primary">Lab Activity</a></li>
                     <li><a href="{{route('halaman.students') }}" class="hover:text-primary">Member</a></li>
                     <li><a href="{{route('halaman.news') }}" class="hover:text-primary">News</a></li>
                     <li><a href="{{route('halaman.research') }}" class="hover:text-primary">Research</a></li>
@@ -37,8 +38,6 @@
 
                 <!-- Search + Login -->
                 <div class="hidden lg:flex items-center gap-3">
-                    <input type="text" placeholder="Cari berita..."
-                        class="border border-slate-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
                     @auth
                         {{-- Jika user sudah login --}}
 
@@ -133,28 +132,44 @@
     </div>
 </div>
 
+<!--List Member-->
+<div class="container mx-auto px-4 lg:px-20 py-16">
+    <h2 class="text-2xl font-bold mb-4 text-center">Lab Members</h2>
 
-    <!--List Member-->
-        <div class="container mx-auto px-4 lg:px-20 py-16">
-        <h2 class="text-2xl font-bold mb-4 text-center">Lab Members</h2>
     <table class="w-1/2 mx-auto text-sm">
         <thead>
             <tr class="bg-gray-100">
                 <th class="p-2 border">No</th>
                 <th class="p-2 border">Nama</th>
                 <th class="p-2 border">Tanggal Bergabung</th>
+                <th class="p-2 border">Aksi</th>
             </tr>
         </thead>
 
-        <tbody>
-            @foreach ($members as $index => $member)
-            <tr>
-                <td class="p-2 border text-center">{{ $index + 1 }}</td>
-                <td class="p-2 border">{{ $member->username }}</td>
-                <td class="p-2 border text-center">{{ $member->created_at->format('d M Y') }}</td>
-            </tr>
-            @endforeach
-        </tbody>
+<tbody>
+    @foreach ($members as $index => $member)
+    <tr>
+        <td class="p-2 border text-center">{{ $index + 1 }}</td>
+        <td class="p-2 border">{{ $member->username }}</td>
+        <td class="p-2 border text-center">{{ $member->created_at->format('d M Y') }}</td>
+
+        @if(auth()->user()->role === 'admin_kepala')
+        <td class="p-2 border text-center">
+            <form action="{{ route('members.destroy', $member->id) }}" method="POST"
+                  onsubmit="return confirm('Yakin hapus member ini?')">
+                @csrf
+                @method('DELETE')
+
+                <button class="bg-red-500 text-white px-3 py-1 rounded text-xs hover:bg-red-600">
+                    Hapus
+                </button>
+            </form>
+        </td>
+        @endif
+    </tr>
+    @endforeach
+</tbody>
+
     </table>
 </div>
 

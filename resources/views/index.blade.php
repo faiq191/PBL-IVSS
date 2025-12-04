@@ -18,6 +18,7 @@
 
         <!-- Logo -->
         <a href="{{ route('halaman.index') }}" class="flex items-center gap-2">
+        <img src="{{ asset('assets/img/polinema.png') }}" alt="Logo" class="w-8 lg:w-10">
         <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
         <p class="text-lg lg:text-xl font-bold">IVSS</p>
         </a>
@@ -84,8 +85,6 @@
             </ul>
         <!-- Search + Login -->
         <div class="hidden lg:flex items-center gap-3">
-          <input type="text" placeholder="Cari berita..."
-            class="border border-slate-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
             @auth
                 {{-- Jika user sudah login --}}
 
@@ -155,6 +154,7 @@
       <div class="max-w-3xl mx-auto bg-slate-50 border border-slate-200 rounded-xl p-8 shadow-md">
         <h2 class="font-bold text-2xl text-center mb-4">Profil Laboratorium</h2>
         <p class="text-slate-600 leading-relaxed text-center space-y-4">
+          <img src="{{ asset('assets/img/logo.png') }}" class="w-1/3 mx-auto mb-4" alt="Laboratorium IVSS">
           <span>Laboratorium Visi Cerdas dan Sistem Cerdas merupakan pusat riset dan pengembangan di bawah Jurusan Teknologi Informasi Politeknik Negeri Malang yang berfokus pada bidang intelligent vision, dan smart system.</span>
           <span>Laboratorium ini menjadi wadah bagi dosen dan mahasiswa untuk melakukan penelitian, pembelajaran, serta pelatihan dalam pengembangan sistem cerdas berbasis pengolahan citra dan kecerdasan buatan.</span>
           <span>Penelitian di laboratorium ini mengintegrasikan computer vision, AI, dan IoT untuk menciptakan solusi inovatif yang mampu mengenali, menganalisis, serta merespon lingkungan secara mandiri.</span>
@@ -219,7 +219,56 @@
     @endforeach
 
 </div>
+     <!-- LECTURER GRID SECTION -->
+     <section class="container mx-auto px-6 lg:px-20 mt-12 mb-16">
 
+       <h2 class="text-3xl font-bold text-center mb-10 text-primary">Perkuliahan Terkait</h2>
+
+       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+         <!-- Kecerdasan Artifial -->
+         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
+           <img src="{{ asset('assets/img/cpu.png') }}" class="mx-auto w-12 h-12 object-contain mb-3" alt="">
+
+           <h3 class="font-bold text-lg">Kecerdasan Artifisial (AI)</h3>
+           <p class="text-sm text-gray-600 mt-2">
+             Teknologi yang fokus pada pengembangan sistem atau mesin yang dapat melakukan tugas-tugas yang biasanya memerlukan kecerdasan manusia,
+              seperti pengenalan pola, pembelajaran, pemecahan masalah, dan pengambilan keputusan.
+           </p>
+         </div>
+
+                  <!-- Machine Learning -->
+         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
+           <img src="{{ asset('assets/img/robot2.png') }}" class="mx-auto w-12 h-12 object-contain mb-3" alt="">
+
+           <h3 class="font-bold text-lg">Machine Learning</h3>
+           <p class="text-sm text-gray-600 mt-2">
+                Cabang dari kecerdasan artifisial yang fokus pada pengembangan algoritma yang memungkinkan mesin belajar dari data
+                untuk membuat prediksi atau keputusan tanpa diprogram secara eksplisit.
+           </p>
+         </div>
+
+                  <!-- Pengolahan Citra dan Visi Komputer -->
+         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
+           <img src="{{ asset('assets/img/laptop.png') }}" class="mx-auto w-12 h-12 object-contain mb-3" alt="">
+
+           <h3 class="font-bold text-lg">Pengolahan Citra dan Visi Komputer</h3>
+           <p class="text-sm text-gray-600 mt-2">
+                Teknik untuk mengolah dan menganalisis gambar atau video menggunakan komputer, termasuk deteksi objek, segmentasi, pengenalan pola,
+                dan interpretasi citra untuk aplikasi seperti pengenalan wajah dan kendaraan otomatis.
+           </p>
+         </div>
+
+                  <!-- Sistem Cerdas (Intelligent System) -->
+         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100">
+           <img src="{{ asset('assets/img/halfbrain.png') }}" class="mx-auto w-12 h-12 object-contain mb-3" alt="">
+
+           <h3 class="font-bold text-lg">Sistem Cerdas (Intelligent System)</h3>
+           <p class="text-sm text-gray-600 mt-2">
+           Pengembangan sistem yang dapat meniru atau melampaui kemampuan kognitif manusia, seperti pengambilan keputusan otomatis,
+           perencanaan, dan pemrosesan informasi dalam konteks aplikasi nyata, seperti robotika dan sistem pakar.
+           </p>
+         </div>
+</section>
 </section>
 <x-footer />
 

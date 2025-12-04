@@ -17,10 +17,11 @@
             <div class="container mx-auto flex justify-between items-center py-5 px-4 lg:px-14">
 
                 <!-- Logo -->
-                    <a href="{{ route('halaman.index') }}" class="flex items-center gap-2">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
-                    <p class="text-lg lg:text-xl font-bold">IVSS</p>
-                    </a>
+        <a href="{{ route('halaman.index') }}" class="flex items-center gap-2">
+        <img src="{{ asset('assets/img/polinema.png') }}" alt="Logo" class="w-8 lg:w-10">
+        <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="w-8 lg:w-10 rounded-full">
+        <p class="text-lg lg:text-xl font-bold">IVSS</p>
+        </a>
 
                 <!-- Mobile menu toggle -->
                 <button id="menu-toggle" class="lg:hidden text-primary text-2xl focus:outline-none">☰</button>
@@ -37,8 +38,6 @@
 
                 <!-- Search + Login -->
                 <div class="hidden lg:flex items-center gap-3">
-                    <input type="text" placeholder="Cari berita..."
-                        class="border border-slate-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
                     @auth
                     {{-- Jika user sudah login --}}
 

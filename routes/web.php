@@ -61,5 +61,8 @@ Route::middleware(['auth', 'role:admin_kepala'])->group(function () {
 
     // REJECT user
     Route::post('/reject/{id}', [UserController::class, 'reject'])->name('user.reject');
+
+
+    Route::delete('/members/{id}', [UserController::class, 'destroy'])->name('members.destroy');
 });
 

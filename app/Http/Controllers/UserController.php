@@ -117,4 +117,19 @@ class UserController extends Controller
         return redirect()->route('halaman.headadmin')->with('success', 'User rejected');
     }
 
+    public function destroy($id)
+{
+    $user = User::findOrFail($id);
+
+     if ($user->role === 'admin_kepala') {
+        return back()->withErrors(['error' => 'Admin tidak boleh dihapus.']);
+     }
+
+    $user->delete();
+
+    return back()->with('success', 'Member berhasil dihapus!');
+}
+
+
+
 }
